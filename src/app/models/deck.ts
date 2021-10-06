@@ -1,11 +1,13 @@
 export class Deck {
 
-    deckId: string;
+    success: boolean;
+    deck_id: string;
     shuffled: boolean;
     remaining: number;
 
-    constructor(deckId: string, shuffled: boolean, remaining: number) {
-        this.deckId = deckId;
+    constructor(success: boolean, deck_id: string, shuffled: boolean, remaining: number) {
+        this.success = success;
+        this.deck_id = deck_id;
         this.shuffled= shuffled;
         this.remaining = remaining;
     }

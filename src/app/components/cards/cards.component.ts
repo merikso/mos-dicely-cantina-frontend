@@ -1,4 +1,6 @@
+import { CardService } from './../../services/card.service';
 import { Component, OnInit } from '@angular/core';
+import { Card } from 'src/app/models/card';
 
 @Component({
   selector: 'app-cards',
@@ -7,7 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+  title = "Card"
+  deck_id = "";
+  card = new Card("", "", "", "", "")
+  public cards: Card[] = [];
+
+  constructor(private cardService: CardService) { }
+
+  public drawCards(count: number) {
+    this.cardService.draw(this.deck_id, count)
+      .subscribe(data => this.cards = data)
+  }
 
   ngOnInit(): void {
   }

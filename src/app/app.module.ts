@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { DealerComponent } from './components/dealer/dealer.component';
 import { UserComponent } from './components/user/user.component';
+import { DeckComponent } from './components/deck/deck.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { UserComponent } from './components/user/user.component';
     CardsComponent,
     DealerComponent,
     UserComponent,
+    DeckComponent,
   ],
   imports: [
     BrowserModule,
