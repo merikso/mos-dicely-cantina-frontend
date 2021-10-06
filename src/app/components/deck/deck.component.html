@@ -1,1 +1,13 @@
-<p>deck works!</p>
+<div>
+    <div>
+        <h2 class="card-header text-center">{{ title }}</h2>
+    </div>
+
+    <div class="card-body">
+        <p>Deck Id: {{ deck.deck_id }}</p>
+    </div>
+
+    <div>
+        <button class="btn btn-secondary btn-center" (click)="newDeck()">Get new deck!</button>
+    </div>
+</div>
