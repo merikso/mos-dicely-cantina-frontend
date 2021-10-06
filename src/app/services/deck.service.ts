@@ -2,8 +2,9 @@ import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { cdUrl } from './../../environments/environment';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { Deck } from "./../models/deck";
+
 
 const url = cdUrl;
 
@@ -22,6 +23,9 @@ export class DeckService {
   public newDeck(): Observable<Deck> {
 
      return this.http.get<Deck>(`${cdUrl}new/shuffle/?deck_count=1`)
+      .pipe(
+        catchError(this.handleError)
+      )
   }
 
   private handleError(httpError: HttpErrorResponse) {
@@ -38,6 +42,7 @@ export class DeckService {
         body was: ${httpError.error}
       `)
     }
+    return throwError('Something bad happened; please try again later')
   }
 
 }
