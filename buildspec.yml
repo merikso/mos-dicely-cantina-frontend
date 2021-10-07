@@ -5,6 +5,7 @@ phases:
     commands:
       - echo installing nodejs...
       - yum install -y nodejs
+      - nvm install 12.14
   pre_build:
     commands:
       - echo installing dependencies...
