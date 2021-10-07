@@ -1,12 +1,12 @@
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { cdUrl } from './../../environments/environment';
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { Deck } from "./../models/deck";
 
 
-const url = cdUrl;
+const url = environment.cdUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +22,7 @@ export class DeckService {
 
   public newDeck(): Observable<Deck> {
 
-     return this.http.get<Deck>(`${cdUrl}new/shuffle/?deck_count=1`)
+     return this.http.get<Deck>(`${environment.cdUrl}new/shuffle/?deck_count=1`)
       .pipe(
         catchError(this.handleError)
       )

@@ -1,0 +1,22 @@
+version: 0.1
+
+phases:
+  install:
+    commands:
+      - echo installing nodejs...
+      - apt-get install -y nodejs
+  pre_build:
+    commands:
+      - echo installing dependencies...
+      - npm i -g @angular/cli
+      - npm install
+  build:
+    commands:
+      # - echo testing...
+      # - echo building...
+      - ng build --prod
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist/mos-dicely-cantina-frontend
