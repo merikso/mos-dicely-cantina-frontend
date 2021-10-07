@@ -1,11 +1,11 @@
-import { cdUrl } from './../../environments/environment';
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
 import { Card } from "./../models/card";
 
-const url = cdUrl;
+const url = environment.cdUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class CardService {
   
   public draw(deckId: string, count: number): Observable<Card[]> {
 
-    return this.http.get<Card[]>(`${cdUrl}${deckId}/draw/?count=${count}`)
+    return this.http.get<Card[]>(`${environment.cdUrl}${deckId}/draw/?count=${count}`)
   }
 
 }
