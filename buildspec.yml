@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo installing nodejs...
-      - sudo apt-get install -y nodejs
+      - yum install -y nodejs
   pre_build:
     commands:
       - echo installing dependencies...
