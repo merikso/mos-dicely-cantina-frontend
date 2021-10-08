@@ -10,6 +10,7 @@ import { DeckComponent } from './components/deck/deck.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BlackjackComponent } from './components/blackjack/blackjack.component';
 import { LoginComponent } from './components/login/login.component';
+import { MapComponent } from './components/map/map.component';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
     DeckComponent,
     BlackjackComponent,
     LoginComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
