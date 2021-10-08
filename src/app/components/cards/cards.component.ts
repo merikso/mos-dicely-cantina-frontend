@@ -18,7 +18,7 @@ export class CardsComponent implements OnInit {
 
   public drawCards(count: number) {
     this.cardService.draw(this.deck_id, count)
-      .subscribe(data => this.cards = data)
+      .subscribe(data => this.cards = data.cards)
   }
 
   public drawNewCard() {
