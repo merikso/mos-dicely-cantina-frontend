@@ -6,6 +6,7 @@ phases:
       - echo installing nodejs...
       - yum -y install nodejs
       - npm install -g n
+      - n 12.14.0
   pre_build:
     commands:
       - echo installing dependencies...
