@@ -11,7 +11,7 @@ export class CardsComponent implements OnInit {
 
   title = "Card"
   deck_id = "";
-  card = new Card("", "", "", "", "")
+  card = new Card("", "", "", "")
   public cards: Card[] = [];
 
   constructor(private cardService: CardService) { }
@@ -19,6 +19,11 @@ export class CardsComponent implements OnInit {
   public drawCards(count: number) {
     this.cardService.draw(this.deck_id, count)
       .subscribe(data => this.cards = data)
+  }
+
+  public drawNewCard() {
+    this.cardService.drawNew()
+      .subscribe(data => this.cards = data.cards)
   }
 
   ngOnInit(): void {
