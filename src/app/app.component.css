@@ -1,8 +1,8 @@
 .bg_image {
-	height: 60em; 
+	height: 55em; 
 	background-size:cover;
 	width: 100%;
-	background-image:url('/assets/images/loginBackground.jpg');
+	background-image:url('CantinaBrawl-GaG.png');
 	background-position: top center;
 }
 
