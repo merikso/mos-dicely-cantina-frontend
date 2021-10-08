@@ -1,0 +1,15 @@
+.list-group-item {
+    float: left
+}
+
+.hands {
+    display: flex;
+}
+
+.dealer-hand {
+    align-items: top;
+}
+
+.player-hand {
+    align-items: bottom;
+}
