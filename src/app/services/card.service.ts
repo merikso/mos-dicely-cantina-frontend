@@ -19,9 +19,9 @@ export class CardService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
   
-  public draw(deckId: string, count: number): Observable<Card[]> {
+  public draw(deckId: string, count: number): Observable<Draw> {
 
-    return this.http.get<Card[]>(`${environment.cdUrl}${deckId}/draw/?count=${count}`)
+    return this.http.get<Draw>(`${environment.cdUrl}${deckId}/draw/?count=${count}`)
   }
 
   public drawNew(): Observable<Draw> {
