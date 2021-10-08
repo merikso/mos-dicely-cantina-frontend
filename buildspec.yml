@@ -16,8 +16,6 @@ phases:
         - echo Installing source NPM dependencies...
         - npm install
         - npm install -g @angular/cli
-        - npm install -g n
-        - n 12.14.0
   build:
     commands:
         - echo Build started 
