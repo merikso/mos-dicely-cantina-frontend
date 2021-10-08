@@ -7,6 +7,7 @@ import { CardsComponent } from './components/cards/cards.component';
 import { DealerComponent } from './components/dealer/dealer.component';
 import { UserComponent } from './components/user/user.component';
 import { DeckComponent } from './components/deck/deck.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { DeckComponent } from './components/deck/deck.component';
     DealerComponent,
     UserComponent,
     DeckComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
