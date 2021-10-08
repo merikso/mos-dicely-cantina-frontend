@@ -1,11 +1,33 @@
+.bg_image {
+	height: 60em; 
+	background-size:cover;
+	width: 100%;
+	background-image:url('/assets/images/loginBackground.jpg');
+	background-position: top center;
+}
+
 #wrapper { 
 	margin: 0 auto;
 	width: 1000px;
 }
 
+h1 {
+	color: rgb(74, 190, 236);
+	font-family: "Starwars1";
+	letter-spacing: 2px;
+}
+
+h2 {
+	color: white;
+}
+
 h3 {
 	margin: 5px 0;
 	text-align: center;
+}
+
+body {
+	color: white;
 }
 
 #game {
