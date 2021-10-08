@@ -4,7 +4,7 @@ phases:
   install:
     commands:
       - echo installing nodejs...
-      - yum -y install node
+      - yum -y install nodejs
       - npm install -g n
   pre_build:
     commands:
