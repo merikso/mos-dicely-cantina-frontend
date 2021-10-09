@@ -1,11 +1,23 @@
+import { AccountsComponent } from './components/accounts/accounts.component';
+import { BlackjackComponent } from './components/blackjack/blackjack.component';
+import { UserComponent } from './components/user/user.component';
+import { CardsComponent } from './components/cards/cards.component';
+import { MapComponent } from './components/map/map.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DeckComponent } from './components/deck/deck.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
 
-  {path: '', component: DeckComponent},
-  {path: '**', component: DeckComponent}
+  {path: 'blackjack', component: BlackjackComponent},
+  {path: 'cards', component: CardsComponent},
+  {path: 'user', component: UserComponent},
+  {path: 'map', component: MapComponent},
+  {path: 'accounts', component: AccountsComponent},
+  {path: 'deck', component: DeckComponent},
+  {path: '', component: LoginComponent},
+  {path: '**', component: LoginComponent},
 
 ];
 
