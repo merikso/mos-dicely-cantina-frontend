@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlackjackComponent } from './components/blackjack/blackjack.component';
 import { LoginComponent } from './components/login/login.component';
 import { MapComponent } from './components/map/map.component';
+import { AccountsComponent } from './components/accounts/accounts.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { MapComponent } from './components/map/map.component';
     BlackjackComponent,
     LoginComponent,
     MapComponent,
+    AccountsComponent,
   ],
   imports: [
     BrowserModule,
