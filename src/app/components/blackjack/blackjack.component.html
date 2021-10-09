@@ -1,0 +1,35 @@
+
+<h1>Welcome to Blackjack</h1>
+
+<div>
+    <div>
+        <h2 class="card-header text-center">{{ deck_id }}</h2>
+        <button class="btn btn-secondary btn-center" (click)="newDeck()">Get a new deck!</button>
+    </div>
+
+    <div class="hands">
+    <div class="dealer-hand">  
+       <!-- I want to iterate through all the user elements within the users property of this component and render them-->
+        <ul *ngFor="let c of dealerCards" class="list-group">
+
+            <li class="list-group-item">
+                <img src="{{c.image}}">
+            </li>
+        </ul>
+    </div>
+
+    <div class="player-hand">
+        <ul *ngFor="let c of playerCards" class="list-group">
+
+            <li class="list-group-item">
+                <img src="{{c.image}}">
+            </li>
+        </ul>
+    </div>
+    </div>
+
+    <div>
+        <button class="btn btn-secondary btn-center" (click)="newHands()">Draw a new hands!</button>
+    </div>
+
+</div>

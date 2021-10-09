@@ -1,11 +1,11 @@
-import { cdUrl } from './../../environments/environment';
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
 import { Observable, throwError } from 'rxjs';
-import { Card } from "./../models/card";
+import { Card, Draw } from "./../models/card";
 
-const url = cdUrl;
+const url = environment.cdUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -19,9 +19,14 @@ export class CardService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
   
-  public draw(deckId: string, count: number): Observable<Card[]> {
+  public draw(deckId: string, count: number): Observable<Draw> {
 
-    return this.http.get<Card[]>(`${cdUrl}${deckId}/draw/?count=${count}`)
+    return this.http.get<Draw>(`${environment.cdUrl}${deckId}/draw/?count=${count}`)
+  }
+
+  public drawNew(): Observable<Draw> {
+
+    return this.http.get<Draw>(`https://deckofcardsapi.com/api/deck/new/draw/?count=1`)
   }
 
 }

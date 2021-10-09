@@ -1,16 +1,49 @@
-<h1>{{ title }}</h1>
+<div class ="bg_image">
+  <h1>{{ title }}</h1>
 
+  <div class="container h-100 d-flex">
+    <div class="card border-0 my-auto w-100">
+      <div class="shadow-lg">
+
+        <h2>Components On the Pipeline</h2>
+
+
+        <!-- <app-deck></app-deck> -->
+        <!-- test -->
+
+        <router-outlet></router-outlet> <!-- app-routing.module.ts-->
+
+        <!-- here we'll render the routed components-->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- This below needs to be in a different component, and then loaded from this file VV
 <div class="container h-100 d-flex">
   <div class="card border-0 my-auto w-100">
        <div class="shadow-lg">
-          
-        <h2>Components</h2>
-
-          <app-deck></app-deck>
-          <router-outlet></router-outlet> <!-- app-routing.module.ts-->
-
-          <!-- here we'll render the routed components-->
-
-      </div>
+<div id="wrapper">
+  <div id="game">
+    <div id="money">
+      <span id="cash">Credits: $<span></span></span>
+      <div id="bank">Winnings: $<span></span></div>
+    </div>
+  </div>
+  <div id="actions">
+    <button id="deal" class="btn">Deal!</button>
+    <button id="hit" class="btn" disabled>Hit</button>
+    <button id="stand" class="btn" disabled>Stand</button>
+    <button id="double" class="btn" disabled>Double Down</button>
+    <button id="split" class="btn" disabled>Split</button>
+    <button id="insurance" class="btn" disabled>Insurance</button>
+    <strong>Wager:</strong> $<input id="wager" class="input-small" type="text" />
   </div>
 </div>
+<div id="myModal" class="modal hide fade">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+ </div>
+</div>
+-->
