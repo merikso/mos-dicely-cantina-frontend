@@ -1,3 +1,4 @@
+import { AccountsComponent } from './components/accounts/accounts.component';
 import { BlackjackComponent } from './components/blackjack/blackjack.component';
 import { UserComponent } from './components/user/user.component';
 import { CardsComponent } from './components/cards/cards.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'cards', component: CardsComponent},
   {path: 'user', component: UserComponent},
   {path: 'map', component: MapComponent},
+  {path: 'accounts', component: AccountsComponent},
   {path: 'deck', component: DeckComponent},
   {path: '', component: LoginComponent},
   {path: '**', component: LoginComponent},

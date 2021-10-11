@@ -1,22 +1,28 @@
-<div class="card my-5">
-    <div class="card-body">
-      <table class="table table-bordered table-striped">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Password</th>
-            <th scope="chips">Chips</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.password }}</td>
-            <td>{{ user.chips }} </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+<div>
+  <div>
+      <h2 class="card-header text-center">{{ title }}</h2>
   </div>
+
+  <div class="card-body">
+
+      <!-- I want to iterate through all the User elements within the users property of this compoennt and render them -->
+      <ul *ngFor="let u of users" class="list-group">
+
+          <li class="list-group-item">Id: {{ u.id }}</li>
+          <li class="list-group-item">Username: {{ u.username }}</li>
+          <li class="list-group-item">Password: {{ u.password }}</li>
+          <li class="list-group-item">Chips: {{ u.chips }}</li>
+
+      </ul>
+
+  </div>
+
+  <div>
+    <button class="btn btn-secondary btn-center" (click)="findAll()">Fetch users!</button>
+  </div>
+
+  <div *ngIf="users.length == 0"> <!-- This element will only be present on the DOM IF there are no users in the array-->
+      {{ clientMessage.message }} 
+  </div> 
+
+</div>

@@ -9,7 +9,7 @@ import { AccountsService } from 'src/app/services/accounts.service';
   styleUrls: ['./accounts.component.css']
 })
 export class AccountsComponent implements OnInit {
-
+  title = 'Backend Info'
   public users: User[] = [];
   public user = new User(0, '', '', 0);
   public clientMessage = new ClientMessage('');
@@ -26,14 +26,14 @@ export class AccountsComponent implements OnInit {
       .subscribe(data => this.users = data)
   }
 
-  public insert() {
+  // public insert() {
 
-    this.userService.save(this.user)
-      .subscribe(
-        data => this.clientMessage.message = `Successfully registered ${data.username}`,
-        error => this.clientMessage.message = `Something went wrong. Error: ${error}`
-      )
-  }
+  //   this.userService.save(this.user)
+  //     .subscribe(
+  //       data => this.clientMessage.message = `Successfully registered ${data.username}`,
+  //       error => this.clientMessage.message = `Something went wrong. Error: ${error}`
+  //     )
+  // }
     
 
 }
