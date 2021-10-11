@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { MapComponent } from './components/map/map.component';
 import { AccountsService } from './services/accounts.service';
 import { AccountsComponent } from './components/accounts/accounts.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AccountsComponent } from './components/accounts/accounts.component';
     LoginComponent,
     MapComponent,
     AccountsComponent,
+    NavComponent,
   ],
   imports: [
     BrowserModule,
