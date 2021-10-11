@@ -1,15 +1,20 @@
 .list-group-item {
-    float: left
+    flex: 1;
 }
 
 .hands {
     display: flex;
+    flex-direction: row;
 }
 
 .dealer-hand {
+    display: flex;
+    flex-direction: row;
     align-items: top;
 }
 
 .player-hand {
+    display: flex;
+    flex-direction: row;
     align-items: bottom;
 }

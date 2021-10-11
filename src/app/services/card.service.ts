@@ -29,4 +29,38 @@ export class CardService {
     return this.http.get<Draw>(`https://deckofcardsapi.com/api/deck/new/draw/?count=1`)
   }
 
+
+  // returns the max sum (aces are treated as 11 unless it would cause the player to bust)
+  public sum(cards: Card[]): number {
+
+    let sum = 0;
+    let aces = 0;
+
+    cards.forEach((card) => {
+
+      if (card.value == "JACK" || card.value == "QUEEN" || card.value == "KING") {
+        sum += 10;
+      } else if (card.value == "ACE") {
+        aces++;
+      } else {
+        // + operator to parse the number from a string
+        sum += +card.value;
+      }
+    })
+
+    while (aces > 0) {
+      if (sum < 11) {
+        sum += 11;
+        aces--;
+      } else {
+        sum += 1;
+        aces--;
+      }
+    }
+
+    console.log(sum)
+    return sum;
+
+  }
+
 }
