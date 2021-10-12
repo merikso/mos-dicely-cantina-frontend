@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DeckComponent } from './components/deck/deck.component';
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'map', component: MapComponent},
   {path: 'accounts', component: AccountsComponent},
   {path: 'deck', component: DeckComponent},
+  {path: 'register', component: RegisterComponent},
   {path: '', component: LoginComponent},
   {path: '**', component: LoginComponent},
 

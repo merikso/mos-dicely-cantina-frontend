@@ -1,0 +1,38 @@
+<div>
+
+    <div class="card-body">
+
+        <!-- create a form!-->
+
+        <!-- We'll take all of values captured ot the form and bindi t to a User object 
+        in our register.component.ts file....then we can call a method that calls an HTTP service
+    and send a POST request to our backend API.-->
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="inputUsername">Username</label>
+                    <input type="text" name="username" class="form-control" id="inputUsername">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" name="password" class="form-control" id="inputPassword4">
+                </div>
+                <div class="form-group col-md-12">
+                    <label for="inputDeposit4">Deposit</label>
+                    <input type="int" name="deposit" class="form-control" id="inputDeposit4">
+                </div>
+                <div class="form-group col-md-12">
+                    <button [routerLink]="'/user'" type="submit" class="btn btn-secondary">Register</button>
+                </div>
+            </div>
+
+            <!-- (click)="registerUser()" [(ngModel)]="user.username" [(ngModel)]="user.password"  
+                SRUCTURAL DIRECTIVE first check DO we have a client message that's either positive or negative?
+                  THEN we populate the view with the alert  -->
+
+        </form>
+
+    </div>
+
+</div>
