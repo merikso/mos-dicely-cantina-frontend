@@ -14,6 +14,8 @@ export class BlackjackComponent implements OnInit {
   remaining = -1;
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
+  pSum = 0;
+  dSum = 0;
   
   constructor(private cardService: CardService, private deckService: DeckService) { }
 
@@ -27,11 +29,22 @@ export class BlackjackComponent implements OnInit {
       .subscribe(data => { this.dealerCards = data.cards, this.remaining= data.remaining })
     this.cardService.draw(this.deck_id, 2)
       .subscribe(data => { this.playerCards = data.cards, this.remaining= data.remaining })
+    this.pSum = this.cardService.sum(this.playerCards);
+    this.dSum = this.cardService.sum(this.dealerCards);
   }
 
   public hit() {
     this.cardService.draw(this.deck_id, 1)
       .subscribe(data => this.playerCards.push(data.cards[0]))
+    this.pSum = this.cardService.sum(this.playerCards)
+  }
+
+  public playerSum() {
+    this.pSum = this.cardService.sum(this.playerCards)
+  }
+
+  public dealerSum() {
+    this.dSum = this.cardService.sum(this.dealerCards)
   }
 
   ngOnInit(): void {

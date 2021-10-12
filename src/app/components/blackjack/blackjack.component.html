@@ -7,9 +7,8 @@
         <button class="btn btn-secondary btn-center" (click)="newDeck()">Get a new deck!</button>
     </div>
 
-    <div class="hands">
     <div class="dealer-hand">  
-       <!-- I want to iterate through all the user elements within the users property of this component and render them-->
+       <!-- show all cards in dealer and player hands-->
         <ul *ngFor="let c of dealerCards" class="list-group">
 
             <li class="list-group-item">
@@ -26,10 +25,14 @@
             </li>
         </ul>
     </div>
+
+    <div>
+        <h3>Sum: {{ pSum }}</h3>
     </div>
 
     <div>
-        <button class="btn btn-secondary btn-center" (click)="newHands()">Draw a new hands!</button>
+        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw a new hands!</button>
+        <button class="btn btn-secondary btn-center" (click)="[hit()]">Hit</button>
     </div>
 
 </div>
