@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  // Hide nav bar
+  showNavBar: boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {

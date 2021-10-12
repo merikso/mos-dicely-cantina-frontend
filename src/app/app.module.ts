@@ -14,6 +14,7 @@ import { MapComponent } from './components/map/map.component';
 import { AccountsService } from './services/accounts.service';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { NavComponent } from './components/nav/nav.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { NavComponent } from './components/nav/nav.component';
     MapComponent,
     AccountsComponent,
     NavComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

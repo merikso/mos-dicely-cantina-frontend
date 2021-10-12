@@ -6,6 +6,25 @@
 	background-position: top center;
 }
 
+* {
+    box-sizing: border-box
+} 
+
+.container {
+    background-color: rgb(20, 182, 211);
+    padding: 10px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.button {
+    background-color: #bbb;
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+}
+
 #wrapper { 
 	margin: 0 auto;
 	width: 1000px;
