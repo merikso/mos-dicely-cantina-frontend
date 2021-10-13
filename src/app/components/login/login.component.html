@@ -1,6 +1,11 @@
 <div>
 
-    <div class="card-body">
+    <div class="card-body" style="
+        background: url('star_drive_bg.png') no-repeat center center fixed;
+        width: 100%;
+        height: 100vh;
+        background-size:cover;
+      ">
 
         <!-- create a form!-->
 
@@ -8,33 +13,37 @@
         in our register.component.ts file....then we can call a method that calls an HTTP service
     and send a POST request to our backend API.-->
 
-        <form>
-            <div class="form-group col-md-12">
-                <label for="inputUsername">Username</label>
-                <input type="text" name="username" class="form-control" id="inputUsername">
-            </div>
+        <div class="parent">
+            <form>
 
-            <div class="form-group col-md-12">
-                <label for="inputPassword4">Password</label>
-                <input type="password" name="password" class="form-control" id="inputPassword4">
-            </div>
+                <div class="form-group col-md-12">
+                    <label for="inputUsername">username</label>
+                    <input type="text" name="username" class="form-control" id="inputUsername">
+                </div>
 
-            <div class="form-group col-md-12">
-                <button [routerLink]="'user'" type="submit" class="btn btn-secondary">Login</button>
-            </div>
 
-            <div class="form-group col-md-12">
-                <button [routerLink]="'register'" class="btn btn-secondary">Register</button>
-            </div>
+                <div class="form-group col-md-12">
+                    <label for="inputPassword4">Password</label>
+                    <input type="password" name="password" class="form-control" id="inputPassword4">
+                </div>
 
-            
+                <div class="form-group col-md-12 ">
+                    <button [routerLink]="'user'" type="submit" class="btn btn-secondary">Login</button>
+                </div>
 
-            <!-- (click)="registerUser()" [(ngModel)]="user.username" [(ngModel)]="user.password"  
+                <div class="form-group col-md-12 ">
+                    <button [routerLink]="'register'" class="btn btn-secondary">Register</button>
+                </div>
+
+
+
+                <!-- (click)="registerUser()" [(ngModel)]="user.username" [(ngModel)]="user.password"  
                 SRUCTURAL DIRECTIVE first check DO we have a client message that's either positive or negative?
                   THEN we populate the view with the alert  -->
 
-        </form>
+            </form>
+
+        </div>
 
     </div>
-
 </div>
