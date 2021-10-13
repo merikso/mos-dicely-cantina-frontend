@@ -39,7 +39,7 @@ body {
 }
 
 #game {
-	background: transparent url('star_drive_bg.png') no-repeat center;
+	background: transparent url('planet_1.png') no-repeat center;
 	border-radius: 5px;
 	color: #333;
 	font: 14px/17px Helvetica, Arial, Verdana, sans-serif;
