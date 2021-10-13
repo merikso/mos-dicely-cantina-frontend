@@ -1,20 +1,5 @@
-.bg_image {
-	height: 55em; 
-	background-size:cover;
-	width: 100%;
-	background-image:url('CantinaBrawl-GaG.png');
-	background-position: top center;
-}
-
 * {
-    box-sizing: border-box
-} 
-
-.container {
-    background-color: rgb(20, 182, 211);
-    padding: 10px;
-    margin: 0 auto;
-    max-width: 800px;
+	overflow: hidden;
 }
 
 .button {
@@ -34,6 +19,10 @@ h1 {
 	color: rgb(74, 190, 236);
 	font-family: "Starwars1";
 	letter-spacing: 2px;
+	text-align: center;
+	background-color: #000;
+	margin-bottom: 0px;
+	padding-bottom: 8px;
 }
 
 h2 {
@@ -41,7 +30,7 @@ h2 {
 }
 
 h3 {
-	margin: 5px 0;
+
 	text-align: center;
 }
 
@@ -50,7 +39,7 @@ body {
 }
 
 #game {
-	background: transparent url('CantinaBrawl-GaG.png') no-repeat center;
+	background: transparent url('planet_1.png') no-repeat center;
 	border-radius: 5px;
 	color: #333;
 	font: 14px/17px Helvetica, Arial, Verdana, sans-serif;

@@ -1,5 +1,32 @@
-nav {
-	color: rgb(74, 190, 236);
+
+
+a {
+	color: rgb(236, 233, 58);
 	font-family: "Starwars1";
 	letter-spacing: 2px;
 }
+
+a:hover {
+	color: red;
+}
+.navbar-brand {
+	color:aqua;
+}
+
+.navbar-brand:link {
+	color: green;
+	background-color: transparent;
+	text-decoration: none;
+  }
+  
+  .navbar-brand:hover {
+	color: red;
+	background-color: transparent;
+	text-decoration: none;
+  }
+  
+  .navbar-brand:active {
+	color: yellow;
+	background-color: transparent;
+	text-decoration: none;
+  }
