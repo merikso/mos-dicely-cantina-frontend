@@ -38,6 +38,17 @@ body {
 	color: white;
 }
 
+
+#img_loading {
+	background: transparent url('planet_1.png') no-repeat center;
+	background: transparent url('star_drive_bg.png') no-repeat center;
+	background: transparent url('starwars-table.jpg') no-repeat center;
+	background: transparent url('map_bg.jpg') no-repeat center;
+	background: transparent url('planet_1.png') no-repeat center;
+	background: transparent url('jar_jar.png') no-repeat center;
+	background: transparent url('cantina.png') no-repeat center;
+}
+
 #game {
 	background: transparent url('planet_1.png') no-repeat center;
 	border-radius: 5px;

@@ -1,6 +1,13 @@
 <app-nav></app-nav>
 <h1>Welcome to Blackjack</h1>
 
+<!--Background image-->
+<div style="
+background: url('cantina.png') no-repeat center center fixed;
+width: 100%;
+height: 87.5vh;
+background-size:cover;
+">
 <div>
     <div>
         <h2 class="card-header text-center">{{ deck_id }}</h2>
@@ -35,4 +42,10 @@
         <button class="btn btn-secondary btn-center" (click)="[hit()]">Hit</button>
     </div>
 
+</div>
+
+<!-- Jar Jar -->
+<div>
+    <img style="position: absolute; height: 200px; width:200px; left:85%; top:76.5%;" 
+    src="jar_jar.png">
 </div>
