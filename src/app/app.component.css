@@ -1,3 +1,6 @@
+* {
+	overflow: hidden;
+}
 
 .button {
     background-color: #bbb;
@@ -16,6 +19,10 @@ h1 {
 	color: rgb(74, 190, 236);
 	font-family: "Starwars1";
 	letter-spacing: 2px;
+	text-align: center;
+	background-color: #000;
+	margin-bottom: 0px;
+	padding-bottom: 8px;
 }
 
 h2 {
