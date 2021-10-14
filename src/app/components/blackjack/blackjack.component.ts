@@ -33,6 +33,7 @@ export class BlackjackComponent implements OnInit {
     this.dSum = this.cardService.sum(this.dealerCards);
   }
 
+  
   public hit() {
     this.cardService.draw(this.deck_id, 1)
       .subscribe(data => this.playerCards.push(data.cards[0]))
