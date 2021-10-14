@@ -1,3 +1,4 @@
+
 .list-group-item {
     flex: 1;
 }
@@ -17,4 +18,10 @@
     display: flex;
     flex-direction: row;
     align-items: bottom;
+}
+
+* {
+	color: rgb(0, 0, 0);
+	font-family: "Starwars1";
+	letter-spacing: 2px;
 }
