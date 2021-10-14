@@ -44,6 +44,7 @@ export class BlackjackComponent implements OnInit {
     }});
   }
 
+  
   public hit() {
     this.cardService.draw(this.deck_id, 1)
       .subscribe(data => this.playerCards.push(data.cards[0]))

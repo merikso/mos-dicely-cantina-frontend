@@ -7,3 +7,5 @@
     font-family: "Starwars2";
     src: local("Starwars2"), url(./assets/fonts/Starjhol.ttf) format("truetype");
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  cdUrl: 'https://deckofcardsapi.com/api/deck/',
-  production: false
+  cdUrl: 'Mosdicelybackend-env.eba-cpytmwf2.us-east-2.elasticbeanstalk.com',
+  production: false,
 };
 
 /*

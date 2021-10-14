@@ -8,8 +8,8 @@ width: 100%;
 height: 94vh;
 background-size:cover;
 ">
-    <div class="container h-100  d-flex">
-        <div class="card border-0 my-auto w-100">
+    <div class="container h-100  d-flex ">
+        <div class="card border-0 my-auto w-100 bg-dark">
             <div class="shadow-lg">
 
                 <div class="form-row">   
@@ -44,8 +44,11 @@ background-size:cover;
                         <div *ngIf="!playing" class="dealer-hand">
                             <!-- show all cards in dealer and player hands-->
                             <ul *ngFor="let c of dealerCards" class="list-group">
-                                <li class="list-group-item">
-                                    <img style="width:80%;height:80%;" src="{{c.image}}">
+
+
+                                <li class="list-group-item list-group-item-danger">
+                                    <img style="width:70%;height:80%;" src="{{c.image}}">
+
                                 </li>
                             </ul>
                         </div>
@@ -53,8 +56,10 @@ background-size:cover;
                         <div class="player-hand">
                             <ul *ngFor="let c of playerCards" class="list-group">
 
-                                <li class="list-group-item">
-                                    <img style="width:80%;height:80%;" src="{{c.image}}">
+
+                                <li class="list-group-item list-group-item-primary">
+                                    <img style="width:70%;height:80%;" src="{{c.image}}">
+
                                 </li>
                             </ul>
                         </div>

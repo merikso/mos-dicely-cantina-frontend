@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientMessage } from 'src/app/models/client-message';
 import { User } from 'src/app/models/user';
 import { AccountsService } from 'src/app/services/accounts.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-accounts',
@@ -14,7 +15,7 @@ export class AccountsComponent implements OnInit {
   public user = new User(0, '', '', 0);
   public clientMessage = new ClientMessage('');
 
-  constructor(private userService: AccountsService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.findAll();
@@ -22,7 +23,7 @@ export class AccountsComponent implements OnInit {
 
   public findAll() {
     
-    this.userService.findAll()
+    this.userService.getAll()
       .subscribe(data => this.users = data)
   }
 
