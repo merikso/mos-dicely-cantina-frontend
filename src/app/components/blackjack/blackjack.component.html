@@ -1,63 +1,71 @@
 <app-nav></app-nav>
-<h1>Welcome to Blackjack</h1>
+
 
 <!--Background image-->
 <div style="
 background: url('cantina.png') no-repeat center center fixed;
 width: 100%;
-height: 87.5vh;
+height: 94vh;
 background-size:cover;
 ">
-<div>
+    <div class="container h-100  d-flex">
+        <div class="card border-0 my-auto w-100">
+            <div class="shadow-lg">
+
+                <div class="form-row">   
+                    <div>
+                        <div class="row">
+                            <h2 class="card-header text-center">{{ deck_id }}</h2>
+                            <button class="btn btn-secondary btn-center" (click)="newDeck()">Get a new deck!</button>
+                            <h3>&nbsp;&nbsp;&nbsp; Sum: {{ pSum }}</h3>
+                            <h3>&nbsp;&nbsp;&nbsp; Dealer Sum: {{ dSum }}</h3>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                            <button class="btn btn-secondary btn-center"
+                                (click)="[hit(), dealerLogic(), gameState()]">Hit</button>
+                            <button class="btn btn-secondary btn-center" (click)="[stand(), gameState()]">Stand</button>
+                        </div>
+
+                        <div class="dealer-hand">
+                            <!-- show all cards in dealer and player hands-->
+                            <ul *ngFor="let c of dealerCards" class="list-group">
+
+                                <li class="list-group-item">
+                                    <img style="width:70%;height:80%;" src="{{c.image}}">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="player-hand">
+                            <ul *ngFor="let c of playerCards" class="list-group">
+
+                                <li class="list-group-item">
+                                    <img style="width:70%;height:80%;" src="{{c.image}}">
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div *ngIf="!inProgress && win > 0" class="game-result">
+                            <h1>You Won! Play again?</h1>
+                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                        </div>
+
+                        <div *ngIf="!inProgress && win == -1" class="game-result">
+                            <h1>You Lost! Play again?</h1>
+                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jar Jar -->
     <div>
-        <h2 class="card-header text-center">{{ deck_id }}</h2>
-        <button class="btn btn-secondary btn-center" (click)="newDeck()">Get a new deck!</button>
+        <img style="position: absolute; height: 200px; width:200px; left:85%; top:76.5%;" src="jar_jar.png">
     </div>
-
-    <div class="dealer-hand">  
-       <!-- show all cards in dealer and player hands-->
-        <ul *ngFor="let c of dealerCards" class="list-group">
-
-            <li class="list-group-item">
-                <img src="{{c.image}}">
-            </li>
-        </ul>
-    </div>
-
-    <div class="player-hand">
-        <ul *ngFor="let c of playerCards" class="list-group">
-
-            <li class="list-group-item">
-                <img src="{{c.image}}">
-            </li>
-        </ul>
-    </div>
-
-    <div *ngIf="!inProgress && win > 0"  class="game-result">
-        <h1>You Won! Play again?</h1>
-        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
-    </div>
-
-    <div *ngIf="!inProgress && win == -1"  class="game-result">
-        <h1>You Lost! Play again?</h1>
-        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
-    </div>
-
-    <div>
-        <h3>Sum: {{ pSum }}</h3>
-        <h3>Dealer Sum: {{ dSum }}</h3>
-    </div>
-
-    <div>
-        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
-        <button class="btn btn-secondary btn-center" (click)="[hit(), dealerLogic(), gameState()]">Hit</button>
-        <button class="btn btn-secondary btn-center" (click)="[stand(), gameState()]">Stand</button>
-    </div>
-
-</div>
-
-<!-- Jar Jar -->
-<div>
-    <img style="position: absolute; height: 200px; width:200px; left:85%; top:76.5%;" 
-    src="jar_jar.png">
-</div>

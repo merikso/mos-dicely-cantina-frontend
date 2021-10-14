@@ -38,6 +38,11 @@ body {
 	color: white;
 }
 
+h2 {
+	color: rgb(0, 0, 0);
+	font-family: "Starwars1";
+	letter-spacing: 2px;
+}
 
 #img_loading {
 	background: transparent url('planet_1.png') no-repeat center;

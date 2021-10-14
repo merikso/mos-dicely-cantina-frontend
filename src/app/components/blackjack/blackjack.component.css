@@ -1,3 +1,4 @@
+
 .list-group-item {
     flex: 1;
 }
@@ -19,3 +20,8 @@
     align-items: bottom;
 }
 
+* {
+	color: rgb(0, 0, 0);
+	font-family: "Starwars1";
+	letter-spacing: 2px;
+}
