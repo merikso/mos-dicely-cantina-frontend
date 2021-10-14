@@ -1,6 +1,13 @@
 * {
-    overflow:hidden;
+    overflow: hidden;
     color: rgb(248, 0, 0);
-	font-family: "Starwars1";
-	letter-spacing: 2px;
+    font-family: "Starwars1";
+    letter-spacing: 2px;
+}
+
+.planet_1 {
+    background-image: url(src/app/planet_1.png);
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
 }
