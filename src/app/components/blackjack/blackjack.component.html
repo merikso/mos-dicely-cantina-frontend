@@ -33,13 +33,25 @@ background-size:cover;
         </ul>
     </div>
 
-    <div>
-        <h3>Sum: {{ pSum }}</h3>
+    <div *ngIf="!inProgress && win > 0"  class="game-result">
+        <h1>You Won! Play again?</h1>
+        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+    </div>
+
+    <div *ngIf="!inProgress && win == -1"  class="game-result">
+        <h1>You Lost! Play again?</h1>
+        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
     </div>
 
     <div>
-        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw a new hands!</button>
-        <button class="btn btn-secondary btn-center" (click)="[hit()]">Hit</button>
+        <h3>Sum: {{ pSum }}</h3>
+        <h3>Dealer Sum: {{ dSum }}</h3>
+    </div>
+
+    <div>
+        <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+        <button class="btn btn-secondary btn-center" (click)="[hit(), dealerLogic(), gameState()]">Hit</button>
+        <button class="btn btn-secondary btn-center" (click)="[stand(), gameState()]">Stand</button>
     </div>
 
 </div>
