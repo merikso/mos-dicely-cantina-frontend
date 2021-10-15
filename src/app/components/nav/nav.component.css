@@ -9,15 +9,17 @@ a {
 a:hover {
 	color: red;
 }
+
+a:active {
+	color: rgb(4, 0, 255);
+}
+
+
 .navbar-brand {
 	color:aqua;
 }
+/*
 
-.navbar-brand:link {
-	color: green;
-	background-color: transparent;
-	text-decoration: none;
-  }
   
   .navbar-brand:hover {
 	color: red;
@@ -30,3 +32,9 @@ a:hover {
 	background-color: transparent;
 	text-decoration: none;
   }
+
+  .navbar-brand:active {
+	color: green;
+	background-color: transparent;
+	text-decoration: none;
+  }*/
