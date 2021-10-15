@@ -8,7 +8,17 @@
     flex-direction: row;
 }
 
+div.cell {
+    display: table-cell;
+}
+
 .dealer-hand {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+.dealer-hand-fd {
     display: flex;
     flex-direction: row;
     align-items: top;

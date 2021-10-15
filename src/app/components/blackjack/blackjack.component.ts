@@ -1,5 +1,5 @@
 import { DeckService } from './../../services/deck.service';
-import { Component, OnInit, ɵɵsetComponentScope } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { CardService } from './../../services/card.service';
 
@@ -15,7 +15,8 @@ export class BlackjackComponent implements OnInit {
   remaining = -1;
   inProgress = false;
   playing = false;
-  win = 0;
+  blackjack = false;
+  win = -5; // dummy value not 1 0 or -1
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
   pSum = 0;
@@ -36,9 +37,14 @@ export class BlackjackComponent implements OnInit {
     .add(() => { this.pSum = this.cardService.sum(this.playerCards),
       this.dSum = this.cardService.sum(this.dealerCards),
       this.inProgress = true
-      this.playing = true });
+      this.playing = true
+      this.win = -5; 
+      if (this.pSum == 21) {
+      this.blackjack = true;
+    }});
   }
 
+  
   public hit() {
     this.cardService.draw(this.deck_id, 1)
       .subscribe(data => this.playerCards.push(data.cards[0]))
@@ -64,7 +70,7 @@ export class BlackjackComponent implements OnInit {
         .subscribe(data => this.dealerCards.push(data.cards[0]))
         .add(() =>  this.dSum = this.cardService.sum(this.dealerCards))
         console.log("dealerHit function finished")
-      }, 50)
+      }, 200)
     }
   
 
@@ -122,8 +128,9 @@ export class BlackjackComponent implements OnInit {
       if (this.dSum < 17) {
         this.dealerLogic()
       }
-      }
       this.inProgress = false;
+      this.gameState();
+    }
   }, 500)
   }
 

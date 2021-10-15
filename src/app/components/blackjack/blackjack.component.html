@@ -28,25 +28,38 @@ background-size:cover;
                         <div class="form-group col-md-6">
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                             <button class="btn btn-secondary btn-center"
-                                (click)="[hit(), dealerLogic(), gameState()]">Hit</button>
-                            <button class="btn btn-secondary btn-center" (click)="[stand(), gameState()]">Stand</button>
+                                (click)="[hit(), busted(), dealerLogic()]">Hit</button>
+                            <button class="btn btn-secondary btn-center" (click)="[stand(), dealerLogic()]">Stand</button>
                         </div>
 
-                        <div class="dealer-hand">
+                        <div *ngIf="playing" class="dealer-hand-fd">
+                            <div class="cell">
+                                <img style="width: 220px;height:260px;" src="face-down-card.png">
+                            </div>
+                            <div class="cell">
+                                <img style="width: 80%;height:80%;" src="{{dealerCards[1].image}}">
+                            </div>      
+                        </div>
+
+                        <div *ngIf="!playing" class="dealer-hand">
                             <!-- show all cards in dealer and player hands-->
                             <ul *ngFor="let c of dealerCards" class="list-group">
 
+
                                 <li class="list-group-item list-group-item-danger">
                                     <img style="width:70%;height:80%;" src="{{c.image}}">
+
                                 </li>
                             </ul>
                         </div>
-
+                        
                         <div class="player-hand">
                             <ul *ngFor="let c of playerCards" class="list-group">
 
+
                                 <li class="list-group-item list-group-item-primary">
                                     <img style="width:70%;height:80%;" src="{{c.image}}">
+
                                 </li>
                             </ul>
                         </div>
@@ -58,6 +71,11 @@ background-size:cover;
 
                         <div *ngIf="!inProgress && win == -1" class="game-result">
                             <h1>You Lost! Play again?</h1>
+                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                        </div>
+
+                        <div *ngIf="!inProgress && win == 0" class="game-result">
+                            <h1>Push (Tie). Play again?</h1>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
                     </div>

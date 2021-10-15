@@ -12,14 +12,14 @@ export class AccountsService {
 
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:5000/accounts'
+    this.usersUrl = 'http://localhost:5000/mos-dicely/accounts'
   }
 
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrl);
   }
 
-  public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
-  }
+  // public save(user: User) {
+  //   return this.http.post<User>(this.usersUrl, user);
+  // }
 }
