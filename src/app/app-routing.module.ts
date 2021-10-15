@@ -8,6 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DeckComponent } from './components/deck/deck.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MatchComponent } from './match/match.component';
+import { RouletteComponent } from './roulette/roulette.component';
+
 
 const routes: Routes = [
 
@@ -18,6 +21,8 @@ const routes: Routes = [
   {path: 'accounts', component: AccountsComponent},
   {path: 'deck', component: DeckComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'match', component: MatchComponent},
+  {path: 'roulette', component: RouletteComponent},
   {path: '', component: LoginComponent},
   {path: '**', component: LoginComponent},
 
