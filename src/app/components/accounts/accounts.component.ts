@@ -4,28 +4,28 @@ import { User } from 'src/app/models/user';
 import { AccountsService } from 'src/app/services/accounts.service';
 import { UserService } from 'src/app/services/user.service';
 
-@Component({
-  selector: 'app-accounts',
-  templateUrl: './accounts.component.html',
-  styleUrls: ['./accounts.component.css']
-})
-export class AccountsComponent implements OnInit {
-  title = 'Backend Info'
-  public users: User[] = [];
-  public user = new User(0, '', '', 0);
-  public clientMessage = new ClientMessage('');
+// @Component({
+//   selector: 'app-accounts',
+//   templateUrl: './accounts.component.html',
+//   styleUrls: ['./accounts.component.css']
+// })
+// export class AccountsComponent implements OnInit {
+//   title = 'Backend Info'
+//   public users: User[] = [];
+//   public user = new User(0, '', '', 0);
+//   public clientMessage = new ClientMessage('');
 
-  constructor(private userService: UserService) { }
+//   constructor(private userService: UserService) { }
 
-  ngOnInit(): void {
-    this.findAll();
-  }
+//   // ngOnInit(): void {
+//   //   this.findAll();
+  // }
 
-  public findAll() {
+  // public findAll() {
     
-    this.userService.getAll()
-      .subscribe(data => this.users = data)
-  }
+  //   this.userService.getAll()
+  //     .subscribe(data => this.users = data)
+  // }
 
   // public insert() {
 
@@ -37,6 +37,6 @@ export class AccountsComponent implements OnInit {
   // }
     
 
-}
+// }
 
 

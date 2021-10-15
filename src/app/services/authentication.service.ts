@@ -1,23 +1,29 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
+import { localUrl } from 'src/environments/environment';
+
+const url = localUrl;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
 
-  constructor(private httpClient: HttpClient) {}
-// Provide username and password for authentication, and once authentication is successful, 
-//store JWT token in session
-  authenticate(username: string, password: any) {
-    return this.httpClient
-      .post<any>("http://localhost:5000/authenticate", { username, password })
+  constructor(private httpClient: HttpClient) { }
+  // Provide username and password for authentication, and once authentication is successful,
+  //store JWT token in session
+  authenticate(username: string, password: string): Observable<any> {
+    return this.httpClient.post<any>(`${url}/authenticate`, { username, password })
       .pipe(
+        catchError(this.handleError),
         map(userData => {
           sessionStorage.setItem("username", username);
           let tokenStr = "Bearer " + userData.token;
           sessionStorage.setItem("token", tokenStr);
+          console.log(userData);
+          console.log(tokenStr);
           return userData;
         })
       );
@@ -31,5 +37,18 @@ export class AuthenticationService {
 
   logOut() {
     sessionStorage.removeItem("username");
+  }
+
+  private handleError(httpError: HttpErrorResponse) {
+    if (httpError instanceof ErrorEvent) {
+      console.log('And error occurred: ', httpError);
+    }
+    else {
+      console.error(`
+        Backend returned code ${httpError.status},
+        body was: ${httpError.error}
+      `)
+    }
+    return throwError('Something bad happened; please try again later');
   }
 }

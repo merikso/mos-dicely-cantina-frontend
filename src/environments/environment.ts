@@ -3,9 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  cdUrl: 'Mosdicelybackend-env.eba-cpytmwf2.us-east-2.elasticbeanstalk.com',
+  cdUrl: 'https://deckofcardsapi.com/api/deck/',
   production: false,
 };
+
+export const localUrl = `http://localhost:5000`
+export const awsUrl = ``
 
 /*
  * For easier debugging in development mode, you can import the following file

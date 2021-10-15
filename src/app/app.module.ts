@@ -12,7 +12,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BlackjackComponent } from './components/blackjack/blackjack.component';
 import { LoginComponent } from './components/login/login.component';
 import { MapComponent } from './components/map/map.component';
-import { AccountsComponent } from './components/accounts/accounts.component';
+// import { AccountsComponent } from './components/accounts/accounts.component';
 import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/user.service';
@@ -30,7 +30,7 @@ import { FormsModule } from '@angular/forms';
     BlackjackComponent,
     LoginComponent,
     MapComponent,
-    AccountsComponent,
+    // AccountsComponent,
     NavComponent,
     RegisterComponent,
   ],

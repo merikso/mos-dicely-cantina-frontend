@@ -12,18 +12,18 @@
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <label for="inputUsername">Username</label>
-                    <input type="text" name="username" class="form-control" id="inputUsername">
+                    <input [(ngModel)]="user.username" type="text" name="username" class="form-control" id="inputUsername">
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Password</label>
-                    <input type="password" name="password" class="form-control" id="inputPassword4">
+                    <input [(ngModel)]="user.password" type="password" name="password" class="form-control" id="inputPassword4">
                 </div>
                 <div class="form-group col-md-12">
                     <label for="inputDeposit4">Deposit</label>
-                    <input type="int" name="deposit" class="form-control" id="inputDeposit4">
+                    <input [(ngModel)]="user.chips" type="int" name="deposit" class="form-control" id="inputDeposit4">
                 </div>
                 <div class="form-group col-md-12">
-                    <button [routerLink]="'/user'" type="submit" class="btn btn-secondary">Register</button>
+                    <button (click)="registerUser()" type="submit" class="btn btn-secondary">Register</button>
                 </div>
             </div>
 

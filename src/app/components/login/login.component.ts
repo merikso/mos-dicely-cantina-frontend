@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ClientMessage } from 'src/app/models/client-message';
+import { LoginForm } from 'src/app/models/login-form';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
@@ -8,35 +10,22 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']})
 
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   
-  username = ''
-  password = ''
-  invalidLogin = false
+  public clientMessage = new ClientMessage('')
+  public lf = new LoginForm("", "");
+  constructor(private authenticationService: AuthenticationService, private router: Router) { }
+ 
   
-  @Input()
-  error!: string | null;
-
-  constructor(private router: Router,
-    private loginservice: AuthenticationService) { }
-
-  ngOnInit() {
-  }
-
-  checkLogin() {
-    (this.loginservice.authenticate(this.username, this.password).subscribe(
-      data => {
-        this.router.navigate(['users'])
-        this.invalidLogin = false
-      },
-      error => {
-        this.invalidLogin = true
-        this.error = error.message;
-
-      }
-    )
-    );
-
+  public login() {
+    this.authenticationService.authenticate(this.lf.username, this.lf.password)
+      .subscribe(
+        data => {
+          this.router.navigateByUrl('/main');
+        },
+        error => this.clientMessage.message = `We got an error : ${error}`,
+      )
+      this.router.navigateByUrl('/map');
   }
 
 
