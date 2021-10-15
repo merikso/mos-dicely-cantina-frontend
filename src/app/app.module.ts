@@ -17,7 +17,6 @@ import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/user.service';
 import { BasicAuthHtppInterceptorService } from './services/basic-auth-interceptor.service';
-import { MatCardModule } from '@angular/material/card';
 import { FormsModule } from '@angular/forms';
 
 
