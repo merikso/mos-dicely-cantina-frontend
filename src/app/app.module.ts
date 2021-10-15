@@ -18,6 +18,8 @@ import { RegisterComponent } from './register/register.component';
 import { UserService } from './services/user.service';
 import { BasicAuthHtppInterceptorService } from './services/basic-auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
+import { RouletteComponent } from './roulette/roulette.component';
+import { MatchComponent } from './match/match.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import { FormsModule } from '@angular/forms';
     AccountsComponent,
     NavComponent,
     RegisterComponent,
+    RouletteComponent,
+    MatchComponent,
   ],
   imports: [
     BrowserModule,
