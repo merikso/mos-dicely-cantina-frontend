@@ -20,6 +20,7 @@ import { BasicAuthHtppInterceptorService } from './services/basic-auth-intercept
 import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './roulette/roulette.component';
 import { MatchComponent } from './match/match.component';
+import { WarComponent } from './war/war.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { MatchComponent } from './match/match.component';
     RegisterComponent,
     RouletteComponent,
     MatchComponent,
+    WarComponent,
   ],
   imports: [
     BrowserModule,

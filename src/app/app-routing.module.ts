@@ -10,11 +10,13 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { MatchComponent } from './match/match.component';
 import { RouletteComponent } from './roulette/roulette.component';
+import { WarComponent } from './war/war.component';
 
 
 const routes: Routes = [
 
   {path: 'blackjack', component: BlackjackComponent},
+  {path: 'war', component: WarComponent},
   {path: 'cards', component: CardsComponent},
   {path: 'user', component: UserComponent},
   {path: 'map', component: MapComponent},

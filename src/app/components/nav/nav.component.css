@@ -5,7 +5,7 @@ a {
 	font-family: "Starwars1";
 	letter-spacing: 2px;
 	-webkit-text-stroke: 2px black;
-	font-size: 25px !important;
+	
 }
 
 a:hover {
