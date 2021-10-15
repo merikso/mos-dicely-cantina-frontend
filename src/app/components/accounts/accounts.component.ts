@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AccountsComponent implements OnInit {
   title = 'Backend Info'
   public users: User[] = [];
-  public user = new User(0, '', '', 0);
+  public user = new User(0, 0, '', '');
   public clientMessage = new ClientMessage('');
 
   constructor(private userService: UserService) { }

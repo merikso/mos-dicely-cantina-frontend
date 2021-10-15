@@ -1,6 +1,6 @@
 import { environment } from './../../environments/environment.prod';
 import { Observable, of } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User, UserWithId } from '../models/user';
 
@@ -11,14 +11,23 @@ export class UserService {
   
   private activeUser?: UserWithId;
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  }
+
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(environment.cdUrl + '/users/findAll');
+    return this.http.get<User[]>(environment.bkndUrlLocal + '/users/findAll');
   }
   
   getById(id: number): Observable<User> {
-    return this.http.get<User>(environment.cdUrl + `/users/${id}`);
+    return this.http.get<User>(environment.bkndUrlLocal + `/users/${id}`);
+  }
+
+  // not working yet
+  withdraw(id: number, amt: number) {
+    return this.http.put(`${environment.bkndUrlLocal}account/${id}/withdraw/${amt}`)
   }
   
   invalidateCurrentUser(): void {
