@@ -52,6 +52,8 @@ body {
 	background: transparent url('cantina.png') no-repeat center;
 	background: transparent url('spaceship_1.png') no-repeat center;
 	background: transparent url('face-down-card.png') no-repeat center;
+	background: transparent url('match_bg.jpg') no-repeat center;
+	background: transparent url('blank_space.png') no-repeat center;
 }
 
 #game {

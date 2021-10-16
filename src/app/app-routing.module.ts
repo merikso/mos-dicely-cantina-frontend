@@ -7,9 +7,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DeckComponent } from './components/deck/deck.component';
 import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { MatchComponent } from './match/match.component';
-import { RouletteComponent } from './roulette/roulette.component';
+import { RegisterComponent } from './components/register/register.component';
+import { MatchComponent } from './components/match/match.component';
+import { RouletteComponent } from './components/roulette/roulette.component';
 import { WarComponent } from './war/war.component';
 
 
