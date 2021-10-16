@@ -14,12 +14,12 @@ import { LoginComponent } from './components/login/login.component';
 import { MapComponent } from './components/map/map.component';
 import { AccountsComponent } from './components/accounts/accounts.component';
 import { NavComponent } from './components/nav/nav.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './components/register/register.component';
 import { UserService } from './services/user.service';
 import { BasicAuthHtppInterceptorService } from './services/basic-auth-interceptor.service';
 import { FormsModule } from '@angular/forms';
-import { RouletteComponent } from './roulette/roulette.component';
-import { MatchComponent } from './match/match.component';
+import { RouletteComponent } from './components/roulette/roulette.component';
+import { MatchComponent } from './components/match/match.component';
 import { WarComponent } from './war/war.component';
 
 
