@@ -27,7 +27,7 @@ export class UserService {
 
   // not working yet
   withdraw(id: number, amt: number) {
-    return this.http.put(`${environment.bkndUrlLocal}account/${id}/withdraw/${amt}`)
+    //return this.http.put(`${environment.bkndUrlLocal}account/${id}/withdraw/${amt}`)
   }
   
   invalidateCurrentUser(): void {
