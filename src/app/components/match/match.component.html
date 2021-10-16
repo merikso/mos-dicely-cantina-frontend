@@ -4,22 +4,20 @@
 <!--Background image-->
 <div style="
 background: url('match_bg.jpg') no-repeat center center fixed;
-width: 100%;
+width: 105%;
 height: 95vh;
 background-size:cover;
 ">
-    <br /><br /><br /><br />
-    <h2>{{ deck_id }}</h2>
 
 
-    <div class="player-hand">
-        <ul *ngFor="let c of playerCards">
-
-            <img style="width:100px;height:100px;" src="{{c.image}}">
-
-        </ul>
+<br/>
+    <div class="grid">
+        <ng-container  *ngFor="let c of playerCards; let idx=index">
+            <img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage" src="{{c.image}}" />
+        </ng-container>
     </div>
 
+<!--let idx=index" [data]="c" (cardClicked)="cardClicked(idx)"-->
 
 
     <div class="form-row">

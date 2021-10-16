@@ -27,6 +27,7 @@ export class CardsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.card.state = 'test'
   }
 
 }
