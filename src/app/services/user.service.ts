@@ -39,6 +39,7 @@ export class UserService {
   }
 
   public getToken() {
+    console.log('getToken() was called')
     return (`Bearer ${localStorage.getItem(this.TOKEN_NAME)}`);
   }
 

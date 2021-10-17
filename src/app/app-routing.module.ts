@@ -1,3 +1,4 @@
+
 // import { AccountsComponent } from './components/accounts/accounts.component';
 import { BlackjackComponent } from './components/blackjack/blackjack.component';
 import { UserComponent } from './components/user/user.component';
@@ -8,6 +9,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { DeckComponent } from './components/deck/deck.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { MatchComponent } from './match/match.component';
+import { RouletteComponent } from './roulette/roulette.component';
+import { WarComponent } from './war/war.component';
+// import { WartestComponent } from './components/wartest/wartest.component';
+
+
 
 const routes: Routes = [
 
@@ -18,6 +25,10 @@ const routes: Routes = [
   // {path: 'accounts', component: AccountsComponent},
   {path: 'deck', component: DeckComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'match', component: MatchComponent},
+  {path: 'roulette', component: RouletteComponent},
+  {path: 'war', component: WarComponent},
+  // {path: 'testwar', component: WartestComponent},
   {path: '', component: LoginComponent},
   {path: '**', component: LoginComponent},
 

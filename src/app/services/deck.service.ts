@@ -1,9 +1,11 @@
+import { environment } from './../../environments/environment.prod';
+import { Draw, Card } from './../models/card';
+import { CardService } from './card.service';
 import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
-import { Deck } from "./../models/deck";
+import { Deck, DeckPile } from "./../models/deck";
 
 
 const url = environment.cdUrl;
@@ -13,7 +15,9 @@ const url = environment.cdUrl;
 })
 export class DeckService {
 
-  constructor(private http: HttpClient) { }
+  deck_id = ''
+
+  constructor(private http: HttpClient, private cardService : CardService) { }
 
   // we need to append Headers to all requests
   httpOptions = {
@@ -26,6 +30,10 @@ export class DeckService {
       .pipe(
         catchError(this.handleError)
       )
+  }
+  
+  public addPile(deck_id: string, pileName: string, cards: string): Observable<DeckPile> {
+    return this.http.get<DeckPile>(`${environment.cdUrl}${deck_id}/pile/${pileName}/add/?cards=${cards}`)
   }
 
   private handleError(httpError: HttpErrorResponse) {

@@ -63,4 +63,15 @@ export class CardService {
 
   }
 
+  public getWarCardValue(card: Card): number {
+    if (card.value == "JACK") {return 11} 
+    else if (card.value == "QUEEN") {return 12} 
+    else if (card.value == "KING") {return 13} 
+    else if (card.value == "ACE") {return 14}
+    else {
+      let returnNumber = parseInt(card.value, 10)
+      return returnNumber
+    }
+  }
+
 }

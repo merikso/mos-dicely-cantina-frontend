@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
         data => this.clientMessage.message = `Succefully added ${data.username} to database.`,
         error => this.clientMessage.message = `Something bad happened: ${error}`
       )
-      console.log(this.user)
       this.router.navigateByUrl('/login');
   }
 

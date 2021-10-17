@@ -21,11 +21,10 @@ export class LoginComponent {
     this.authenticationService.authenticate(this.lf.username, this.lf.password)
       .subscribe(
         data => {
-          this.router.navigateByUrl('/main');
+          this.router.navigateByUrl('/map')
         },
         error => this.clientMessage.message = `We got an error : ${error}`,
       )
-      this.router.navigateByUrl('/map');
   }
 
 
