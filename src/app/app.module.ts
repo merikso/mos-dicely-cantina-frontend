@@ -20,7 +20,7 @@ import { BasicAuthHtppInterceptorService } from './services/basic-auth-intercept
 import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './components/roulette/roulette.component';
 import { MatchComponent } from './components/match/match.component';
-import { WarComponent } from './components/war/war.component';
+import { WarComponent } from './war/war.component';
 
 
 

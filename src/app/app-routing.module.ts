@@ -11,7 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MatchComponent } from './components/match/match.component';
 import { RouletteComponent } from './components/roulette/roulette.component';
-import { WarComponent } from './components/war/war.component';
+import { WarComponent } from './war/war.component';
 // import { WartestComponent } from './components/wartest/wartest.component';
 
 

@@ -24,6 +24,8 @@ export class AuthenticationService {
           sessionStorage.setItem("token", tokenStr);
           console.log(userData);
           console.log(tokenStr);
+          let usernames = sessionStorage.getItem("username")
+          console.log(usernames)
           return userData;
         })
       );
