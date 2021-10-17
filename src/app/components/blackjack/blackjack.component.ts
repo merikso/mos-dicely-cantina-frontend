@@ -1,8 +1,10 @@
+import { UserService } from 'src/app/services/user.service';
 import { DeckService } from './../../services/deck.service';
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { CardService } from './../../services/card.service';
 import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user'
 
 
 @Component({
@@ -17,13 +19,14 @@ export class BlackjackComponent implements OnInit {
   inProgress = false;
   playing = false;
   blackjack = false;
-  win = 0; // dummy value 
+  win = 0; // dummy value
+  public user: User = new User(0, 0, '', '') 
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
   pSum = 0;
   dSum = 0;
   
-  constructor(private cardService: CardService, private deckService: DeckService) { }
+  constructor(private cardService: CardService, private deckService: DeckService, private userService: UserService) { }
 
   public newDeck() {
     this.deckService.newDeck()
@@ -40,7 +43,8 @@ export class BlackjackComponent implements OnInit {
       this.inProgress = true
       this.playing = true
       this.blackjack = false
-      this.win = -5; 
+      this.win = -5
+      this.getUserById() 
       if (this.pSum == 21) {
       this.blackjack = true;
       this.inProgress = false;
@@ -75,6 +79,24 @@ export class BlackjackComponent implements OnInit {
       }, 0)
     }
   
+  public getUser() {
+    this.userService.findByUsername(sessionStorage.getItem("username")!)
+    .subscribe(data => this.user = data)
+  }
+
+  public getUserById() {
+    this.userService.findByUserId(6)
+    .subscribe(data => this.user = data)
+  }
+  
+  public withdraw() {
+    this.userService.withdraw(this.user.id, 1)
+  }
+
+  public deposit() {
+    this.userService.deposit(this.user.id, 1)
+  }
+
 
   public playerSum() {
     this.pSum = this.cardService.sum(this.playerCards)
