@@ -10,21 +10,38 @@ background-size:cover;
 ">
 
 
-<br/>
+    <br />
     <div class="grid">
-        <ng-container  *ngFor="let c of playerCards; let idx=index">
-            <img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage" src="{{c.image}}" />
+        <ng-container *ngFor="let c of playerCards; let idx=index">
+
+
+            <div *ngIf="(c.state === 'flipped')">
+                <img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"
+                    src="{{c.image}}" />
+            </div>
+            <div *ngIf="(c.state !== 'flipped') && (c.image !== 'blank_space.png')">
+                <img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"
+                    src="face_down_match.png" />
+            </div>
+            <div *ngIf="(c.state === 'matched')">
+                <img style="opacity: 0.0; height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"
+                    src="{{c.image}}" />
+            </div>
+
+
         </ng-container>
     </div>
 
-<!--let idx=index" [data]="c" (cardClicked)="cardClicked(idx)"-->
+    <!--let idx=index" [data]="c" (cardClicked)="cardClicked(idx)"-->
 
 
     <div class="form-row">
         <div>
             <div class="row">
-                <button class="btn btn-secondary btn-center" (click)="newDeck()">Get a new deck!</button>
-                <button class="btn btn-secondary btn-center" (click)="layCards()">Lay Cards!</button>
+                
+                <div *ngIf="(match_started == false)">
+                    <button style="font-size: 25px; position: absolute; right: 41%; top: 44%;" (click)="layCards()">Start the Game!</button>
+                </div>
             </div>
 
             <div class="form-group col-md-6">
