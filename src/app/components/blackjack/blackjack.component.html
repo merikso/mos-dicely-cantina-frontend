@@ -25,16 +25,11 @@ background-size:cover;
                             
                         </div>
 
-                        <div class="form-group col-md-6">
-                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
-                            <button class="btn btn-secondary btn-center"
-                                (click)="[hit(), busted(), dealerLogic()]">Hit</button>
-                            <button class="btn btn-secondary btn-center" (click)="[stand(), dealerLogic()]">Stand</button>
-                        </div>
+
 
                         <div *ngIf="playing" class="dealer-hand-fd">
                             <div class="cell">
-                                <img style="width: 220px;height:260px;" src="face-down-card.png">
+                                <img style="width: 220px;height:260px;" src="face_down_match.png">
                             </div>
                             <div class="cell">
                                 <img style="width: 80%;height:80%;" src="{{dealerCards[1].image}}">
@@ -64,6 +59,13 @@ background-size:cover;
                             </ul>
                         </div>
 
+                        <h3>&nbsp;&nbsp;&nbsp; Sum: {{ pSum }}</h3>
+                        
+                        <div *ngIf="blackjack" class="game-result">
+                            <h1>Blackjack!!! Play again?</h1>
+                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                        </div>
+
                         <div *ngIf="!inProgress && win > 0" class="game-result">
                             <h1>You Won! Play again?</h1>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
@@ -77,6 +79,13 @@ background-size:cover;
                         <div *ngIf="!inProgress && win == 0" class="game-result">
                             <h1>Push (Tie). Play again?</h1>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                        </div>
+
+                        <div *ngIf="inProgress" class="form-group col-md-6">
+                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                            <button class="btn btn-secondary btn-center"
+                                (click)="[hit(), busted(), dealerLogic()]">Hit</button>
+                            <button class="btn btn-secondary btn-center" (click)="[stand()]">Stand</button>
                         </div>
                     </div>
                 </div>

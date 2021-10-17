@@ -1,5 +1,5 @@
 import { environment } from './../../environments/environment.prod';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
@@ -15,19 +15,18 @@ export class UserService {
   
   private readonly TOKEN_NAME = 'Mos Dicely Token'
 
-  constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
+
+  constructor(private http: HttpClient) { }
+  
   
   // public loginUser(user: User): Observable<User> {
   //   return this.http.post<User>(`${url}/user/login`, user, this.httpOptions);
   // }
 
   public loginUser(user: User): Observable<User> {
-  
-    //const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization' }).set("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJVc2VyIFRva2VuIFBvcnRhbCIsInN1YiI6InRoaW5oIiwiaXNzIjoiQ3JlYXRlZCBieSBoaWVyb3BoYW50IiwiZXhwIjoxNjM0MDE1OTczLCJpYXQiOjE2MzM5ODcxNzN9.BbPyHNHRQVRepskfADugJlZU3cTY83rfZAsH4dbP7TBiEGTRL9vTqXQHzMx2A9WY2lUXCO0PGyYDB1w-KKWtcw"); 
-
     return this.http.post<User>(`${url}/authenticate`, user, { responseType: 'text' as 'json', headers: { skip: "true" } })  // url, user, this.httpOptions
 
       .pipe( // we are calling a method on the data returned in the observable
@@ -37,6 +36,22 @@ export class UserService {
         catchError(this.handleError) // passing a callback
       )
   }
+
+  getAll(): Observable<User[]> {
+    return this.http.get<User[]>(environment.bkndUrlLocal + '/users/findAll');
+  }
+  
+  getById(id: number): Observable<User> {
+    return this.http.get<User>(environment.bkndUrlLocal + `/users/${id}`);
+  }
+
+  // not working yet
+  withdraw(id: number, amt: number) {
+    //return this.http.put(`${environment.bkndUrlLocal}account/${id}/withdraw/${amt}`)
+  }
+  
+    //const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization' }).set("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJVc2VyIFRva2VuIFBvcnRhbCIsInN1YiI6InRoaW5oIiwiaXNzIjoiQ3JlYXRlZCBieSBoaWVyb3BoYW50IiwiZXhwIjoxNjM0MDE1OTczLCJpYXQiOjE2MzM5ODcxNzN9.BbPyHNHRQVRepskfADugJlZU3cTY83rfZAsH4dbP7TBiEGTRL9vTqXQHzMx2A9WY2lUXCO0PGyYDB1w-KKWtcw"); 
+
 
   public getToken() {
     console.log('getToken() was called')

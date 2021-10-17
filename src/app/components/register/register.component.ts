@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ClientMessage } from '../models/client-message';
-import { User } from '../models/user';
-import { UserService } from '../services/user.service';
+import { ClientMessage } from 'src/app/models/client-message';
+import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
+
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { UserService } from '../services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  public user = new User(0, '', '', 0)
+  public user = new User(0, 0, '', '')
   public clientMessage = new ClientMessage('')
 
   constructor(private userService: UserService, private router: Router) { }

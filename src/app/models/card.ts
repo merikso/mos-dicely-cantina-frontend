@@ -4,12 +4,14 @@ export class Card {
     value: string;
     suit: string;
     code: string;
+    state: string;
 
     constructor(image: string, value: string, suit: string, code: string) {
         this.image = image;
         this.value = value;
         this.suit = suit;
         this.code = code;
+        this.state = 'test';
     }
 
 }

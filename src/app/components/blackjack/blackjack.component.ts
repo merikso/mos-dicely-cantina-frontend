@@ -2,6 +2,7 @@ import { DeckService } from './../../services/deck.service';
 import { Component, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/card';
 import { CardService } from './../../services/card.service';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class BlackjackComponent implements OnInit {
   inProgress = false;
   playing = false;
   blackjack = false;
-  win = -5; // dummy value not 1 0 or -1
+  win = 0; // dummy value 
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
   pSum = 0;
@@ -38,13 +39,15 @@ export class BlackjackComponent implements OnInit {
       this.dSum = this.cardService.sum(this.dealerCards),
       this.inProgress = true
       this.playing = true
+      this.blackjack = false
       this.win = -5; 
       if (this.pSum == 21) {
       this.blackjack = true;
+      this.inProgress = false;
+      this.playing = false;
     }});
   }
 
-  
   public hit() {
     this.cardService.draw(this.deck_id, 1)
       .subscribe(data => this.playerCards.push(data.cards[0]))
@@ -52,15 +55,14 @@ export class BlackjackComponent implements OnInit {
         this.playing = !this.busted() })
   }
 
-  public dealerHit = new Promise<number>((resolve =>
-    setTimeout(() => {
-    console.log("In the dealerHit promise")
+  public dealerHit = new Observable<number>((dummy) => {
+    console.log("dealerHit observable")
     this.cardService.draw(this.deck_id, 1)
-      .subscribe(data => this.dealerCards.push(data.cards[0]))
-      .add(() =>  this.dSum = this.cardService.sum(this.dealerCards))
-      console.log("dealerHit finished")
-      resolve(this.dSum)
-    }, 100)))
+        .subscribe(data => this.dealerCards.push(data.cards[0]))
+        .add(() => { this.dSum = this.cardService.sum(this.dealerCards)
+          console.log(this.dSum)})
+    return dummy;
+  });
 
 
     public dealerHit1() {
@@ -70,7 +72,7 @@ export class BlackjackComponent implements OnInit {
         .subscribe(data => this.dealerCards.push(data.cards[0]))
         .add(() =>  this.dSum = this.cardService.sum(this.dealerCards))
         console.log("dealerHit function finished")
-      }, 200)
+      }, 0)
     }
   
 
@@ -78,10 +80,10 @@ export class BlackjackComponent implements OnInit {
     this.pSum = this.cardService.sum(this.playerCards)
   }
 
-  public dealerSum = new Promise<number>((resolve => {
+  public dealerSum = new Observable<number>((res) => {
    console.log("in the dealerSum promise")  
-   resolve(this.cardService.sum(this.dealerCards))})
-  )
+    res.next(this.cardService.sum(this.dealerCards))
+  });
 
   public stand() {
     this.playing = false;

@@ -1,0 +1,41 @@
+* {
+	color: rgb(0, 0, 0);
+	font-family: "Starwars1";
+	letter-spacing: 2px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(13, 115px);
+    row-gap: 5px;
+    column-gap: 10px;
+    margin: 5px !important;
+}
+
+
+
+.list-group-item {
+    flex: 1;
+}
+
+.hands {
+    display: flex;
+    flex-direction: row;
+}
+
+div.cell {
+    display: table-cell;
+}
+
+.dealer-hand {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+.dealer-hand-fd {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
