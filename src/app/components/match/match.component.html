@@ -14,6 +14,15 @@ background-size:cover;
     <div class="grid">
         <ng-container *ngFor="let c of playerCards; let idx=index">
 
+<!--
+            <div class="card" (click)="cardClicked(idx)">
+                <div class="face back">
+                    <img src="face_down_match.png">
+                </div>
+                <div class="face front">
+                    <img src="{{c.image}}">
+                </div>
+            </div>-->
 
             <div *ngIf="(c.state === 'flipped')">
                 <img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"

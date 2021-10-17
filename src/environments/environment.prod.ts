@@ -3,4 +3,8 @@ export const environment = {
   bkndUrlDeployed: 'Mosdicelybackend-env.eba-cpytmwf2.us-east-2.elasticbeanstalk.com',
   bkndUrlLocal: 'localhost:5000/',
   production: false,
+  localUrl: `http://localhost:5000`
 };
+
+export const localUrl = `http://localhost:5000`
+export const awsUrl = ``
