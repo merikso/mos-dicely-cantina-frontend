@@ -19,6 +19,8 @@ background-size:cover;
                             <button class="btn btn-secondary btn-center" (click)="newDeck()">Get a new deck!</button>
                             <h3>&nbsp;&nbsp;&nbsp; Sum: {{ pSum }}</h3>
                             <h3>&nbsp;&nbsp;&nbsp; Dealer Sum: {{ dSum }}</h3>
+                            <h3>username: {{ user.username}}</h3>
+                            <h3>chips: {{ user.chips}}</h3>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -86,6 +88,7 @@ background-size:cover;
                             <button class="btn btn-secondary btn-center"
                                 (click)="[hit(), busted(), dealerLogic()]">Hit</button>
                             <button class="btn btn-secondary btn-center" (click)="[stand()]">Stand</button>
+                            <button class="btn btn-secondary btn-center" (click)="[deposit()]">deposit</button>
                         </div>
                     </div>
                 </div>

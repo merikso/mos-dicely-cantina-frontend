@@ -47,7 +47,11 @@ export class UserService {
 
   // not working yet
   withdraw(id: number, amt: number) {
-    //return this.http.put(`${environment.bkndUrlLocal}account/${id}/withdraw/${amt}`)
+    this.http.get(`${url}/users/account/${id}/withdraw/${amt}`)
+  }
+
+  deposit(id: number, amt: number) {
+    this.http.post(`${url}/users/account/${id}/deposit/${amt}`, "")
   }
   
     //const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization' }).set("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJVc2VyIFRva2VuIFBvcnRhbCIsInN1YiI6InRoaW5oIiwiaXNzIjoiQ3JlYXRlZCBieSBoaWVyb3BoYW50IiwiZXhwIjoxNjM0MDE1OTczLCJpYXQiOjE2MzM5ODcxNzN9.BbPyHNHRQVRepskfADugJlZU3cTY83rfZAsH4dbP7TBiEGTRL9vTqXQHzMx2A9WY2lUXCO0PGyYDB1w-KKWtcw"); 
@@ -64,9 +68,6 @@ export class UserService {
     return this.http.get(`${url}/home`);
   }
 
-
-
-
   public registerUser(user: User): Observable<User> {
     return this.http.post<User>(`${url}/register`, user, this.httpOptions).pipe(catchError(this.handleError))
   }
@@ -79,14 +80,14 @@ export class UserService {
   }
   public findByUserId(id: number): Observable<User> {
 
-    return this.http.get<User>(`${url}/${id}`)
+    return this.http.get<User>(`${url}/users/${id}`)
       .pipe(
         catchError(this.handleError)
       );
   }
   public findByUsername(username: string): Observable<User> {
 
-    return this.http.get<User>(`${url}/find/${username}`)
+    return this.http.get<User>(`${url}/users/${username}`)
       .pipe(
         catchError(this.handleError)
       );
