@@ -1,7 +1,10 @@
+import { UserService } from 'src/app/services/user.service';
 import { Card } from '../models/card';
 import { DeckService } from '../services/deck.service';
 import { CardService } from '../services/card.service';
 import { Component, OnInit } from '@angular/core';
+import { User, UserArray } from '../models/user';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -23,6 +26,8 @@ const CARD_VALUE_MAP = {
 }
 
 
+
+
 @Component({
   selector: 'app-war',
   templateUrl: './war.component.html',
@@ -35,19 +40,30 @@ export class WarComponent implements OnInit {
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
   stop = true;
-  endgame = false;
   inRound = false;
   setup = false;
+  betRequired = true;
   innerText = ''
   player_remaining = 0
-  pCurrentCard = 'face-down-match.png'
-  dCurrentCard = 'face-down-match.png'
+  pCurrentCard = 'face_down_match.png'
+  dCurrentCard = 'face_down_match.png'
   buttonText = 'Start Game'
+  bet = 0
+  u_id = 0
+  chips = 0
+  myForm = new FormGroup({})
+  
 
 
-  constructor(private cardService : CardService, private deckService : DeckService) { }
+  constructor(private cardService : CardService, 
+              private deckService : DeckService,
+              private userService : UserService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getUser();
+   }
+
+   
 
   public startGame() {
     console.log('Starting game.')
@@ -56,6 +72,7 @@ export class WarComponent implements OnInit {
     this.inRound = false;
     this.stop = false;
     this.setup = true;
+    this.getUser()
     console.log(`${this.deck_id}`)
     })
    
@@ -68,11 +85,11 @@ export class WarComponent implements OnInit {
     console.log('Distributing cards...')
     this.cardService.draw(this.deck_id, 26)
       .subscribe(data => { this.dealerCards = data.cards}).add(() =>{
-        this.dealer_remaining = 10
+        this.dealer_remaining = 2
     
       this.cardService.draw(this.deck_id, 26)
         .subscribe(data => { this.playerCards = data.cards }).add(() => {
-          this.player_remaining = 10
+          this.player_remaining = 2
 
         this.stop = false
         this.inRound = false
@@ -87,35 +104,32 @@ export class WarComponent implements OnInit {
     
   }
 
+  public getBet() {
+    this.betRequired = false;
+    console.log(this.bet)
+    this.startGame()
+  }
+
   public centerButton() {
-    if (this.stop) {
-      this.startGame()
-      this.buttonText = 'Get Cards'
-    } else if (this.setup) {
+    if (this.setup) {
       this.newHands()
       this.buttonText = 'Draw Card'
     } else if (this.inRound) {
       this.cleanBeforeRound()
       this.buttonText = 'Draw Card'
-    } else {
+    } else if (this.stop == false) {
       this.drawCards()
-      this.buttonText = 'Continue'
+    } else {
+      this.betRequired = true;
     }
   }
-  /**
-   * TO DO
-   * 2. Buttons to draw
-   * 3. Center button says 'start game' when stop = true; 'draw' when inround = false;
-   * 'continue' when inround = true
-   * 4. CSS
-   * 5. Connect to chips
-   */
+  
   public cleanBeforeRound() {
     console.log('Cleaning table...')
     this.inRound = false;
     this.innerText = ''
-    this.pCurrentCard = 'face-down-match.png'
-    this.dCurrentCard = 'face-down-match.png'
+    this.pCurrentCard = 'face_down_match.png'
+    this.dCurrentCard = 'face_down_match.png'
     this.setup = false
     // METHODS
     
@@ -139,8 +153,8 @@ export class WarComponent implements OnInit {
     this.dCurrentCard = dealerCard.image
     console.log(this.dCurrentCard)
 
-    console.log(playerCard.value)
-    console.log(dealerCard.value)
+    console.log('Player card: ' + playerCard.value)
+    console.log('Dealer card: ' + dealerCard.value)
 
     this.updateDeckCount()
 
@@ -148,26 +162,40 @@ export class WarComponent implements OnInit {
       this.innerText = "Win"
       this.playerCards.push(playerCard)
       this.playerCards.push(dealerCard)
+      this.buttonText = 'Continue'
     } else if (this.whoWinsRound(dealerCard, playerCard)){
       this.innerText = "Lose"
       this.dealerCards.push(playerCard)
       this.dealerCards.push(dealerCard)
+      this.buttonText = 'Continue'
     } else {
       this.innerText = "Draw"
       this.playerCards.push(playerCard)
       this.dealerCards.push(dealerCard)
+      this.buttonText = 'Continue'
     }
 
-    if (this.gameOver(this.playerCards.length)) {
+    this.updateDeckCount()
+
+    if (this.gameOver(this.player_remaining)) {
       console.log('Game over!')
-      this.innerText = "You Lose!"
+      this.innerText = `You Lose! You lost ${this.bet} chips.`
+      this.inRound = false;
       this.stop = true 
-      this.endgame = true
-    } else if (this.gameOver(this.dealerCards.length)) {
+      // this.pCurrentCard = 'face_down_match.png'
+      this.buttonText = 'Play again?'
+      this.withdraw()
+     
+      // this.betRequired = true
+    } else if (this.gameOver(this.dealer_remaining)) {
       console.log('Game over!')
-      this.innerText = "You Win!"
+      this.innerText = `You Win! You won ${this.bet} chips`
+      this.inRound = false;
       this.stop = true
-      this.endgame = true
+      // this.dCurrentCard = 'face_down_match.png'
+      this.deposit()
+      this.buttonText = 'Play again?'
+      // this.betRequired = true
     }
   }
 
@@ -176,51 +204,53 @@ export class WarComponent implements OnInit {
   }
 
   whoWinsRound(card1: Card, card2: Card): boolean {
+    console.log("Card One Value: " + this.cardService.getWarCardValue(card1))
+    console.log("Card Two Value: " + this.cardService.getWarCardValue(card2))
     return this.cardService.getWarCardValue(card1) > this.cardService.getWarCardValue(card2)
   }
   
   public updateDeckCount() {
     console.log('Deck count updated.')
-    this.player_remaining = this.playerCards.length-16
-    this.dealer_remaining = this.dealerCards.length-16
+    this.player_remaining = this.playerCards.length-24
+    this.dealer_remaining = this.dealerCards.length-24
   }
 
-  // public isRoundWinner(card1: Card, card2: Card): string {
-  //   // let value1 = this.cardService.getWarCardValue(card1)
-  //   // let value2 = this.cardService.getWarCardValue(card2)
+  public getUser() {
+    let uarray: UserArray = new UserArray([])
+    let uarr: User[] = []
+    let string = ""
 
-  //   // if (value1 > value2) {
-  //   //   return "Dealer won."
-  //   // } else if (value1 < value2) {
-  //   //   return "You won!"
-  //   // } else {
-  //   //   return "Draw"
-  //   // }
+    this.userService.findAllUsers()
+    .subscribe(data => string = JSON.stringify(data))
+    .add(() => { uarr = JSON.parse(string), console.log(uarr), 
+    this.u_id = this.userService.findUserId(sessionStorage.getItem('username')!, uarr)
+    console.log(this.u_id)
+    this.getUserById()
+  })
+  }
+  
+  public getUserById() {
+    this.userService.findByUserId(this.u_id)
+      .subscribe(data => { this.u_id = data.id, this.chips = data.chips })
+    console.log(this.chips)
+  }
 
-  // }
+  public withdraw() {
+    console.log("Before withdrawal: " + this.chips)
+    this.userService.withdraw(this.u_id, this.bet);
+    console.log("Withdrew " + this.bet + ".")
+    console.log("After withdrawal: " + this.chips)
+    this.getUser()
+    }
 
-  // public pileCreation() { 
-    //   let playercode = ''
-    //   this.cardService.draw(this.deck_id, 26).subscribe( data => {this.playerCardsTest = data.cards})
-      
-    //   console.log(this.playerCardsTest)
-    //   let counter = 0
-    //   for (let card of this.playerCardsTest) {
-    //     let code = card.code
-    //     playercode += code
-    
-        
-    //     if (counter < this.playerCardsTest.length-1) {
-    //       playercode += ','
-    //     }
-  
-    //     counter += 1
-    //   }
-  
-    //   console.log(`playercodes: ${playercode}`)
-  
-    //   this.deckService.addPile(this.deck_id, 'players', playercode).subscribe( data => {this.player_remaining = data.remaining, this.playerCards = data.cards})
-    //   console.log(this.player_remaining)
-    //   console.log(this.playerCards)
-    // }
+  public deposit() {
+    console.log("Before deposit: " + this.chips)
+    this.userService.deposit(this.u_id, this.bet)
+    console.log("Deposited " + this.bet + ".")
+    console.log("After deposit: " + this.chips)
+    this.getUser()
+  }
 }
+
+  
+

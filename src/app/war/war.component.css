@@ -1,21 +1,20 @@
-/* *, *::after, *::before { 
+*, *::after, *::before {
 	box-sizing: border-box;
-  }
-  
-  body {
-	margin: 0;
+}
+
+.container {
+	margin: 0 auto;
 	display: grid;
-	grid-template-columns: repeat(2, 4rem);
-	grid-template-rows: 7rem 2rem 7rem;
+	grid-template-columns: repeat(2, 7rem);
+	grid-template-rows: 12rem 5rem 12rem 5rem;
 	gap: .5rem;
-	cursor: pointer;
 	justify-content: center;
 	padding-top: 1rem;
-  }
-  
-  .deck {
+}
+
+.deck {
 	height: 100%;
-	width: 100px;
+	width: 100%;
 	border: 1px solid black;
 	display: flex;
 	justify-content: center;
@@ -24,129 +23,104 @@
 	border-radius: .5rem;
 	color: white;
 	user-select: none;
-  }
-  
-  .computer-deck {
-	background-color: green;
-  }
-  
-  .player-deck {
+}
+
+.computer-deck {
+	margin-right: 3.5px;
+}
+
+.computer-deck {
+	background-color: salmon;
+}
+
+.player-deck {
 	background-color: blue;
-  }
-  
-  .text {
+}
+
+.betText {
+	color: white;
+	text-shadow: 1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
+}
+
+.text {
 	grid-column: span 2;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-  }
-  
-  .card {
+	color: white;
+	text-shadow: 1px 1px 0 #000,
+    -1px 1px 0 #000,
+    1px -1px 0 #000,
+    -1px -1px 0 #000,
+    0px 1px 0 #000,
+    0px -1px 0 #000,
+    -1px 0px 0 #000,
+    1px 0px 0 #000,
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    2px -2px 0 #000,
+    -2px -2px 0 #000,
+    0px 2px 0 #000,
+    0px -2px 0 #000,
+    -2px 0px 0 #000,
+    2px 0px 0 #000,
+    1px 2px 0 #000,
+    -1px 2px 0 #000,
+    1px -2px 0 #000,
+    -1px -2px 0 #000,
+    2px 1px 0 #000,
+    -2px 1px 0 #000,
+    2px -1px 0 #000,
+    -2px -1px 0 #000;
+}
+
+.card {
 	position: relative;
 	height: 100%;
 	width: 100%;
 	border: 1px solid black;
 	border-radius: .5rem;
-	/* display: flex;
+}
+
+.card img {
+	width: 110%;
+	height: auto;
+	background-size: 100% 100%;
+}
+@supports(object-fit: fill) {
+	.card img {
+		height: 100%;
+		object-fit: fill;
+		object-position: center center;
+	}
+}
+
+.button {
+	grid-column: span 2;
+	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 4rem;
-  }
-  
-  .card.red {
-	color: red;
-  }
-  
-  .card.black {
-	color: black;
-  }
-  
-  .card::before,
-  .card::after {
-	position: absolute;
-	content: attr(data-value);
-	font-size: 1rem;
-  }
-  
-  .card::before {
-	top: .5rem;
-	left: .5rem
-  }
-  
-  .card::after {
-	bottom: .5rem;
-	right: .5rem;
-	transform: rotate(180deg);
-  } */
-/* .one {
-	width: 50%;
-	float:right;
 }
-
-.two {
-	width: 50%;
-	float:left;
-}
-
-.image-container {
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
-    position: relative; 
-}
-
-.image-inner-container {
-    position: absolute;
-}
-
-.overlay {
-    position: absolute;
-    text-align: center;
-    width: 100%;
-	height: 100%;
-    margin: 0;
-} */
-
-body, html {
-	height: 100%
-}
-
-
-
-
-.innerText {
-  grid-column: span 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.grid-one {
-    display: grid;
-    grid-template-columns: repeat(2, 250px);
-    row-gap: 5px;
-    column-gap: 5px;
-    justify-items: center;
-    align-items: center;
-	margin-top: 0;
-	margin-bottom: 70px;
-}
-
-.grid-two {
-	display: grid;
-    grid-template-columns: repeat(2, 250px);
-    row-gap: 5px;
-    column-gap: 5px;
-    justify-items: center;
-    align-items: center;
-	margin-top: 70px;
-	margin-bottom: 0;
-}
-
-.container {
-	margin-left: 125;
-	margin-top: 50px;
-	justify-items: center;
-	align-items: center;
-}
-

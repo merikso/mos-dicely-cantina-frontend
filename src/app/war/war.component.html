@@ -1,72 +1,45 @@
 <app-nav></app-nav>
-<div class='bg' style="
-background: url('match_bg.jpg');">
-    <br>
-
-
-    <!-- <div class="whole">
-        <div>
-            <div class="row">
-                <div class="column">
-                    <div class="computer-card-slot card-slot">
-                        <img style="width: 220px;height:260px;" src="{{dCurrentCard}}">
-                    </div>
-
-                </div>
-
-                <div class="column">
-                    <div class="computer-deck deck">{{dealer_remaining}}</div>
-                </div>
-            </div>
-            <div class="cell">
-                <div class="text">{{innerText}}</div>
-            </div>
-
-            <div class="row">
-                <div class="cell">
-                    <div class="player-card-slot card-slot">
-                        <img style="width: 220px;height:260px;" src="{{pCurrentCard}}">
-                    </div>
-                </div>
-
-                <div class="cell">
-                    <div class="player-deck deck">{{player_remaining}}</div>
-                </div>
-            </div>
-        </div> -->
-    <div class="container">
-        <div class="child">
-            <div class="grid-one">
-                <div class="one">
-                    <img img style="width: 220px;height:260px;" src="{{dCurrentCard}}">
-                </div>
-                <div class="two">
-                    <img img style="width: 220px;height:260px;" src="blank_space.png">
-                </div>
-            </div>
-
-
-
-            <div class="innerText">Text</div>
-
-            <div class="grid-two">
-                <div class="two">
-                    <img img style="width: 220px;height:260px;" src="{{pCurrentCard}}">
-                </div>
-                <div class="image-container">
-                    <div class="image-inner-container">
-                        <img img style="width:220px;height:260px;" src="blank_space.png">
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-            <button (click)="centerButton()" class="btn btn-secondary">{{buttonText}}</button>
-
+<div style="
+background: url('match_bg.jpg') no-repeat center center fixed;
+width: 100%;
+height: 95vh;
+background-size:cover;
+">
+<br/>
+<div *ngIf="!betRequired" class="container">
+    <div class="computer-deck deck">{{dealer_remaining}}</div>
+    <div class="computer-card-slot card-slot">
+        <div class="card">
+            <img src="{{dCurrentCard}}">
         </div>
     </div>
-    <img style="position: absolute; height: 200px; width:200px; left:85%; top:90%;" src="jar_jar.png">
+
+    <div class="text">{{innerText}}</div>
+    
+    
+    <div class="player-deck deck">{{player_remaining}}</div>
+    <div class="player-card-slot card-slot">
+        <div class="card">
+            <img src="{{pCurrentCard}}">
+        </div>
+    </div>
+    
+    <div class="button">
+        <button (click)="centerButton()" class="btn btn-secondary">{{buttonText}}</button>
+    </div>
+
+    <div class="endbutton"></div>
+
+    <div>
+        <img style="position: absolute; height: 200px; width:200px; left:85%; top:80.3%;" src="jar_jar.png">
+    </div>
+</div>
+
+<div *ngIf="betRequired" class="game-result">
+    <h3 style="margin-left: 8px; margin-bottom: 5px;" class="betText">Chips: {{ chips }}</h3>
+    <h3 style="margin-left: 8px;" class="betText">Enter your bet and submit.</h3>
+    <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
+    
+    <button style="margin-top: 5px; margin-left: 1px; "class="btn btn-secondary btn-center" (click)="getBet()">Submit and start game</button>
+    
 </div>
