@@ -21,6 +21,8 @@ import { FormsModule } from '@angular/forms';
 import { RouletteComponent } from './components/roulette/roulette.component';
 import { MatchComponent } from './components/match/match.component';
 import { WarComponent } from './war/war.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlipanimationComponent } from './components/flipanimation/flipanimation.component';
 
 
 
@@ -39,13 +41,15 @@ import { WarComponent } from './war/war.component';
     RegisterComponent,
     RouletteComponent,
     MatchComponent,
-    WarComponent
+    WarComponent,
+    FlipanimationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     UserService,

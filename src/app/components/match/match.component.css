@@ -9,7 +9,10 @@
     grid-template-columns: repeat(13, 115px);
     row-gap: 5px;
     column-gap: 10px;
-    margin: 5px !important;
+    margin-left: 125px;
+    margin-top: 50px;
+    justify-items: center;
+    align-items: center;
 }
 
 
@@ -38,6 +41,35 @@ div.cell {
     flex-direction: row;
     align-items: top;
 }
+
+.card {
+    
+    
+    border-radius: 5px;
+    height: 130px;
+    width: 120px;
+    cursor: pointer;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+.face {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    backface-visibility: visible;
+
+        object-fit: cover;
+        border-radius: inherit;
+    
+}
+
+.front {
+    transform: rotateY(180deg);
+}
+
 
 
 

@@ -4,13 +4,11 @@
 <!--Background image-->
 <div style="
 background: url('match_bg.jpg') no-repeat center center fixed;
-width: 105%;
+width: 100%;
 height: 95vh;
 background-size:cover;
 ">
-
-
-    <br />
+<br/>
     <div class="grid">
         <ng-container *ngFor="let c of playerCards; let idx=index">
 
@@ -24,18 +22,55 @@ background-size:cover;
                 </div>
             </div>-->
 
-            <div *ngIf="(c.state === 'flipped')">
+            <div class="card" (click)="cardClicked(idx)" [@cardFlip]="c.state">
+
+                <div class="face back">
+                    <div *ngIf="(c.state === 'matched')">
+                        <img style="opacity: 60.0; height: 130px; width: 120px;"
+                            src="{{c.image}}" />
+                    </div>
+                    <div *ngIf="(c.state !== 'matched')">
+                        <img style="opacity: 100.0; height: 130px; width: 120px;"
+                            src="face_down_match.png" />
+                    </div>
+
+                </div>
+
+                <div class="face front">
+                    <div *ngIf="(c.state === 'matched')">
+                        <img style="opacity: 100.0; height: 130px; width: 120px;"
+                            src="{{c.image}}" />
+                    </div>
+                    <div *ngIf="(c.state !== 'matched')">
+                        <img style="opacity: 100.0; height: 130px; width: 120px;"
+                            src="{{c.image}}" />
+                    </div>
+                </div>
+
+            </div>
+
+           <!-- <div *ngIf="(c.state === 'flipped')">
                 <img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"
                     src="{{c.image}}" />
             </div>
             <div *ngIf="(c.state !== 'flipped') && (c.image !== 'blank_space.png')">
-                <img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"
-                    src="face_down_match.png" />
-            </div>
-            <div *ngIf="(c.state === 'matched')">
+                <div class="tp-box" (click)="toggleFlip()" [@flipState]="flip">
+                    <div class="tp-box__side tp-box__front"><img style="height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"
+                        src="face_down_match.png" />
+                    </div>
+                    <div class="tp-box__side tp-box__back">Back
+                    </div>
+                </div>
+            </div>-->
+            
+
+            
+                
+
+            <!--<div *ngIf="(c.state === 'matched')">
                 <img style="opacity: 0.0; height: 130px; width: 120px;" (click)="cardClicked(idx)" class="itemImage"
                     src="{{c.image}}" />
-            </div>
+            </div>-->
 
 
         </ng-container>
