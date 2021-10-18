@@ -4,7 +4,7 @@ import { DeckService } from '../services/deck.service';
 import { CardService } from '../services/card.service';
 import { Component, OnInit } from '@angular/core';
 import { User, UserArray } from '../models/user';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -51,16 +51,33 @@ export class WarComponent implements OnInit {
   bet = 0
   u_id = 0
   chips = 0
-  myForm = new FormGroup({})
+  starterText = 'Enter your bet and submit.'
   
 
 
   constructor(private cardService : CardService, 
               private deckService : DeckService,
-              private userService : UserService) { }
+              private userService : UserService,
+              private fb: FormBuilder) 
+              { }
 
   ngOnInit(): void {
     this.getUser();
+   }
+
+   public submit() {
+     if(this.bet <= this.chips && this.bet != 0) {
+       console.log("Bet is valid, proceeding...")
+       this.getBet()
+     } else if (this.bet == 0) {
+       console.log("Bet is too low, restarting.")
+       this.betRequired = true;
+       this.starterText = 'You cannot bet 0 chips! You must bet at least one chip.'
+     } else {
+       console.log("Bet is too high!")
+       this.betRequired = true;
+       this.starterText = 'You cannot bet more than your chips. Try again.'
+     }
    }
 
    
@@ -184,6 +201,7 @@ export class WarComponent implements OnInit {
       this.stop = true 
       // this.pCurrentCard = 'face_down_match.png'
       this.buttonText = 'Play again?'
+      this.starterText = 'Enter your bet and submit.'
       this.withdraw()
      
       // this.betRequired = true
@@ -195,6 +213,7 @@ export class WarComponent implements OnInit {
       // this.dCurrentCard = 'face_down_match.png'
       this.deposit()
       this.buttonText = 'Play again?'
+      this.starterText = 'Enter your bet and submit.'
       // this.betRequired = true
     }
   }

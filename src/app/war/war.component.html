@@ -37,9 +37,20 @@ background-size:cover;
 
 <div *ngIf="betRequired" class="game-result">
     <h3 style="margin-left: 8px; margin-bottom: 5px;" class="betText">Chips: {{ chips }}</h3>
-    <h3 style="margin-left: 8px;" class="betText">Enter your bet and submit.</h3>
+    <h3 style="margin-left: 8px;" class="betText">{{starterText}}</h3>
     <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
     
-    <button style="margin-top: 5px; margin-left: 1px; "class="btn btn-secondary btn-center" (click)="getBet()">Submit and start game</button>
-    
+    <button style="margin-top: 5px; margin-left: 1px; "class="btn btn-secondary btn-center" (click)="submit()">Submit and start game</button>
+   
+    <!-- <div class="validateForm">
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <div class="form-group">
+                <h3 style="margin-left: 8px; margin-bottom: 5px;" class="betText">Chips: {{ chips }}</h3>
+                <h3 style="margin-left: 8px;" class="betText">Enter your bet and submit.</h3>
+                <input formControlName="bet" type="number" id="bet" class="form-cont rol">
+            </div>
+
+            <button style="margin-top: 5px; margin-left: 1px; "class="btn btn-secondary btn-center" (click)="submit()">Submit and start game</button>
+        </form>
+    </div> -->
 </div>
