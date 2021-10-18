@@ -31,7 +31,7 @@ const CARD_VALUE_MAP = {
 
 export class WarComponent implements OnInit {
   deck_id = ''
-  dealer_remaining = -1
+  dealer_remaining = 0
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
   stop = true;
@@ -39,9 +39,9 @@ export class WarComponent implements OnInit {
   inRound = false;
   setup = false;
   innerText = ''
-  player_remaining = -1
-  pCurrentCard = ''
-  dCurrentCard = ''
+  player_remaining = 0
+  pCurrentCard = 'face-down-match.png'
+  dCurrentCard = 'face-down-match.png'
   buttonText = 'Start Game'
 
 
@@ -114,8 +114,8 @@ export class WarComponent implements OnInit {
     console.log('Cleaning table...')
     this.inRound = false;
     this.innerText = ''
-    this.pCurrentCard = ''
-    this.dCurrentCard = ''
+    this.pCurrentCard = 'face-down-match.png'
+    this.dCurrentCard = 'face-down-match.png'
     this.setup = false
     // METHODS
     

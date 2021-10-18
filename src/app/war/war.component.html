@@ -1,13 +1,10 @@
 <app-nav></app-nav>
-<div style="
-background: url('match_bg.jpg') no-repeat center center fixed;
-width: 105%;
-height: 95vh;
-background-size:cover;
-">
+<div class='bg' style="
+background: url('match_bg.jpg');">
+    <br>
 
 
-    <div class="whole">
+    <!-- <div class="whole">
         <div>
             <div class="row">
                 <div class="column">
@@ -36,14 +33,40 @@ background-size:cover;
                     <div class="player-deck deck">{{player_remaining}}</div>
                 </div>
             </div>
+        </div> -->
+    <div class="container">
+        <div class="child">
+            <div class="grid-one">
+                <div class="one">
+                    <img img style="width: 220px;height:260px;" src="{{dCurrentCard}}">
+                </div>
+                <div class="two">
+                    <img img style="width: 220px;height:260px;" src="blank_space.png">
+                </div>
+            </div>
+
+
+
+            <div class="innerText">Text</div>
+
+            <div class="grid-two">
+                <div class="two">
+                    <img img style="width: 220px;height:260px;" src="{{pCurrentCard}}">
+                </div>
+                <div class="image-container">
+                    <div class="image-inner-container">
+                        <img img style="width:220px;height:260px;" src="blank_space.png">
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <button (click)="centerButton()" class="btn btn-secondary">{{buttonText}}</button>
+
         </div>
-
-
-
-
-        <button (click)="centerButton()" class="btn btn-secondary">{{buttonText}}</button>
-        <div *ngIf=></div>
     </div>
-    <div>
-        <img style="position: absolute; height: 200px; width:200px; left:85%; top:90%;" src="jar_jar.png">
-    </div>
+    <img style="position: absolute; height: 200px; width:200px; left:85%; top:90%;" src="jar_jar.png">
+</div>
