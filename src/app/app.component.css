@@ -23,6 +23,7 @@ h1 {
 	background-color: #000;
 	margin-bottom: 0px;
 	padding-bottom: 8px;
+	-webkit-text-stroke: 1px rgb(255, 255, 255);
 }
 
 h2 {
