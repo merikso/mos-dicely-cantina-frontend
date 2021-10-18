@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
+  username = sessionStorage.getItem("username")
+  credits = sessionStorage.getItem("chips")
+
   constructor() { }
 
   ngOnInit(): void {
