@@ -44,11 +44,15 @@ export class UserService {
   
   // not working yet
   withdraw(id: number, amt: number) {
+    console.log("withdraw triggered")
     this.http.post(`${url}/users/account/${id}/withdraw/${amt}`, "")
+    .subscribe()
   }
 
   deposit(id: number, amt: number) {
+    console.log("deposit triggered")
     this.http.post(`${url}/users/account/${id}/deposit/${amt}`, "")
+    .subscribe()
   }
   
     //const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization' }).set("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJVc2VyIFRva2VuIFBvcnRhbCIsInN1YiI6InRoaW5oIiwiaXNzIjoiQ3JlYXRlZCBieSBoaWVyb3BoYW50IiwiZXhwIjoxNjM0MDE1OTczLCJpYXQiOjE2MzM5ODcxNzN9.BbPyHNHRQVRepskfADugJlZU3cTY83rfZAsH4dbP7TBiEGTRL9vTqXQHzMx2A9WY2lUXCO0PGyYDB1w-KKWtcw"); 
@@ -80,12 +84,22 @@ export class UserService {
     return this.http.post<User>(`${url}/register`, user, this.httpOptions).pipe(catchError(this.handleError))
   }
 
-  public findAllUsers(): Observable<User[]> {
+  public findAllUsers(): Observable<any> {
     console.log("findAll triggered")
-    return this.http.get<User[]>(`${url}/users/findAll`)
+    return this.http.get<any>(`${url}/users/findAll`)
       .pipe(
         catchError(this.handleError)
       )
+  }
+
+  public findUserId(username: string, uarr: User[]): number {
+    let num = 0;
+    for (let i = 0; i < uarr.length; i++) {
+      if (uarr[i].username == username) {
+        num = uarr[i].id
+      }
+    }
+    return num
   }
 
   public findByUserId(id: number): Observable<User> {

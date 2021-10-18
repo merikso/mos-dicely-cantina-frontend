@@ -14,19 +14,20 @@ background-size:cover;
 
                 <div class="form-row">   
                     <div>
+                        <div class="row" style="align-items: center; margin-left: 50px;">
+                            <h4>Get a new deck and get the user info before playing!</h4>
+                        </div>
                         <div class="row">
                             <h2 class="card-header text-center">{{ deck_id }}</h2>
                             <button class="btn btn-secondary btn-center" (click)="[newDeck()]">Get a new deck!</button>
-                            <button class="btn btn-secondary btn-center" (click)="[getUser()]">Get User Info</button>
-                            <h3>Id: {{ u_id }}</h3>
-                            <h3>chips: {{ user.chips}}</h3>
+                            <button class="btn btn-secondary btn-center" (click)="[getUser()]">Get user Info</button>
+                            <h3>id: {{ u_id }}</h3>
+                            <h3 style="margin-left: 20px;">chips: {{ chips }}</h3>
                         </div>
 
                         <div class="form-group col-md-6">
                             
                         </div>
-
-
 
                         <div *ngIf="playing" class="dealer-hand">
                              <div class="cell">
@@ -68,34 +69,40 @@ background-size:cover;
                             </ul>
                         </div>
 
-                        <h3>&nbsp;&nbsp;&nbsp; Sum: {{ pSum }}</h3>
-                        
+                           
                         <div *ngIf="blackjack" class="game-result">
                             <h1>Blackjack!!! Play again?</h1>
+                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
 
-                        <div *ngIf="!inProgress && win > 0" class="game-result">
+                        <div *ngIf="!inProgress && win == 1" class="game-result">
                             <h1>You Won! Play again?</h1>
+                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
 
                         <div *ngIf="!inProgress && win == -1" class="game-result">
                             <h1>You Lost! Play again?</h1>
+                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
 
                         <div *ngIf="!inProgress && win == 0" class="game-result">
                             <h1>Push (Tie). Play again?</h1>
+                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
 
                         <div *ngIf="inProgress" class="form-group col-md-6">
-                            <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
+                            <h3>&nbsp;&nbsp;&nbsp; Sum: {{ pSum }}</h3>
                             <button class="btn btn-secondary btn-center"
                                 (click)="[hit(), busted(), dealerLogic()]">Hit</button>
                             <button class="btn btn-secondary btn-center" (click)="[stand()]">Stand</button>
-                            <button class="btn btn-secondary btn-center" (click)="[deposit()]">deposit</button>
                         </div>
                     </div>
                 </div>
@@ -106,3 +113,4 @@ background-size:cover;
     <div>
         <img style="position: absolute; height: 200px; width:200px; left:85%; top:78%;" src="jar_jar.png">
     </div>
+</div>
