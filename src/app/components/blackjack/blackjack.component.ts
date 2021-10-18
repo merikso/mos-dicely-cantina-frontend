@@ -20,11 +20,9 @@ export class BlackjackComponent implements OnInit {
   inProgress = false;
   playing = false;
   blackjack = false;
-
   u_id = 0
   chips = 0
-
-
+  bet = 0
   win = 0; // dummy value
   public user: User = new User(0, '', '', 0) 
   public playerCards: Card[] = [];
@@ -50,7 +48,7 @@ export class BlackjackComponent implements OnInit {
       this.playing = true
       this.blackjack = false
       this.win = -5
-      //this.getUserById() 
+      this.getUserById() 
       if (this.pSum == 21) {
       this.blackjack = true;
       this.inProgress = false;
@@ -65,33 +63,28 @@ export class BlackjackComponent implements OnInit {
         this.playing = !this.busted() })
   }
 
-  public dealerHit = new Observable<number>((dummy) => {
-    console.log("dealerHit observable")
+  public dealerHit1() {
+    setTimeout(() => {
+    console.log("In the dealerHit function")
     this.cardService.draw(this.deck_id, 1)
-        .subscribe(data => this.dealerCards.push(data.cards[0]))
-        .add(() => { this.dSum = this.cardService.sum(this.dealerCards)
-          console.log(this.dSum)})
-    return dummy;
-  });
-
-
-    public dealerHit1() {
-      setTimeout(() => {
-      console.log("In the dealerHit function")
-      this.cardService.draw(this.deck_id, 1)
-        .subscribe(data => this.dealerCards.push(data.cards[0]))
-        .add(() =>  this.dSum = this.cardService.sum(this.dealerCards))
-        console.log("dealerHit function finished")
-      }, 0)
-    }
+      .subscribe(data => this.dealerCards.push(data.cards[0]))
+      .add(() =>  this.dSum = this.cardService.sum(this.dealerCards))
+      console.log("dealerHit function finished")
+    }, 0)
+  }
   
   public getUser() {
     let uarray: UserArray = new UserArray([])
     let uarr: User[] = []
+    let string = ""
+
     this.userService.findAllUsers()
-    .subscribe(data => uarr = data)
-    .add(console.log(uarr.length))
-   // this.u_id = this.userService.getUserFromArray('test', uarr)
+    .subscribe(data => string = JSON.stringify(data))
+    .add(() => { uarr = JSON.parse(string), console.log(uarr), 
+    this.u_id = this.userService.findUserId(sessionStorage.getItem('username')!, uarr)
+    console.log(this.u_id)
+    this.getUserById()
+  })
   }
 
   public getUserById() {
@@ -100,11 +93,11 @@ export class BlackjackComponent implements OnInit {
   }
   
   public withdraw() {
-    this.userService.withdraw(this.user.id, 1)
+    this.userService.withdraw(this.u_id, this.bet)
   }
 
   public deposit() {
-    this.userService.deposit(this.user.id, 1)
+    this.userService.deposit(this.u_id, this.bet)
   }
 
 
@@ -127,6 +120,7 @@ export class BlackjackComponent implements OnInit {
       this.playing = false;
       this.inProgress = false
       this.win = -1;
+      this.withdraw()
       return true;
     } else {
       return false;
@@ -135,15 +129,22 @@ export class BlackjackComponent implements OnInit {
 
   public gameState() {
     setTimeout(() => {
-    if (!this.inProgress) {
+    if (!this.inProgress && this.win == -5) {
       if (this.dSum > 21) {
         this.win = 1
+        this.deposit()
+        return
       } else if (this.pSum > this.dSum) {
         this.win = 1
+        this.deposit()
+        return
       } else if (this.dSum > this.pSum) {
         this.win = -1
+        this.withdraw()
+        return
       } else if (this.pSum == this.dSum) {
         this.win = 0;
+        return
       }
     }
     }, 2000)
@@ -166,6 +167,10 @@ export class BlackjackComponent implements OnInit {
       this.gameState();
     }
   }, 500)
+  }
+
+  public popup() {
+    alert("Meesa like you! Here's some chips.")
   }
 
   ngOnInit(): void {

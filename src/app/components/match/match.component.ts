@@ -2,12 +2,35 @@ import { Component, OnInit } from '@angular/core';
 import { DeckService } from 'src/app/services/deck.service';
 import { CardService } from 'src/app/services/card.service';
 import { Card } from 'src/app/models/card';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
-  styleUrls: ['./match.component.css']
+  styleUrls: ['./match.component.css'],
+  animations: [
+    trigger('cardFlip', [
+      state('default', style({
+        transform: ''
+      })),
+      state('undefined', style({
+        transform: ''
+      })),
+      state('flipped', style({
+        transform: 'rotateY(180deg)'
+      })),
+      transition('* => flipped', [
+        animate('400ms')
+      ]),
+      transition('undefined => flipped', [
+        animate('400ms')
+      ]),
+      transition('flipped => default', [
+        animate('200ms')
+      ])
+    ])
+  ]
 })
 export class MatchComponent implements OnInit {
 
@@ -22,6 +45,12 @@ export class MatchComponent implements OnInit {
   constructor(private cardService: CardService, private deckService: DeckService) {
     //Create the new Deck
     console.log("Deck length: " + this.playerCards.length);
+  }
+
+    flip: string = 'inactive';
+
+  toggleFlip() {
+    this.flip = (this.flip == 'inactive') ? 'active' : 'inactive';
   }
 
   public newDeck() {
@@ -82,7 +111,7 @@ export class MatchComponent implements OnInit {
 
         if (this.matchedCount === 26) {
           //Show the victory button
-
+          this.match_started = false;
           this.restart();
         }
       }

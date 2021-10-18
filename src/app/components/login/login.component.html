@@ -1,65 +1,47 @@
-<!-- <div style="  background: url('star_drive_bg.png') no-repeat center center fixed;
+<div style="  background: url('star_drive_bg.png') no-repeat center center fixed;
 width: 100%;
 height: 94.2vh;
 background-size:cover;">
-    <div class="parent">
-        <form>
 
-            <div class="form-group col-md-12">
-                <label for="inputUsername">username</label>
-                <input type="text" [(ngModel)]="username" name="username" class="form-control" id="inputUsername">
-            </div>
-
-
-            <div class="form-group col-md-12">
-                <label for="inputPassword4">Password</label>
-                <input type="password" [(ngModel)]="password" name="password" class="form-control" id="inputPassword">
-            </div>
-
-            <div class="form-group col-md-12 ">
-                <button [routerLink]="'user'" type="submit" class="btn btn-secondary">Login</button>
-            </div>
-
-            <div class="form-group col-md-12 ">
-                <button [routerLink]="'register'" class="btn btn-secondary">Register</button>
-            </div>
-
-
-
-            <button (click)="checkLogin()">Login!</button> -->
 
 
 
             <!-- SRUCTURAL DIRECTIVE first check DO we have a client message that's either positive or negative?
           THEN we populate the view with the alert  -->
 
-    <!-- </form>
+            <!-- </form>
 
 </div> -->
-<div class="container-fluid">
-    <div class="background-cover row" id="loginbackground">
-        <div class="bg-dark bg-gradient col-12 col-lg-4 col-md-6 col-sm-8 container-sm mb-5 mt-5 rounded shadow-lg">
-            <div class="align-content-center container flex-wrap justify-content-center mb-5 mt-5 p-5">
-                <h3 class="fs-3 fw-lighter mb-4 text-center text-light text-uppercase">Sign in</h3>
-                <form role="form" class="text-light">
-                    <div class="mb-3">
-                        <label for="username-input" class="lead text-white-50">Username</label>
-                        <input [(ngModel)]="lf.username" type="username" name="username" class="bg-gradient bg-light form-control shadow-sm" id="username-input" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="password-input" class="lead text-white-50">Password</label>
-                        <input [(ngModel)]="lf.password" type="password" name="password" class="bg-gradient bg-light form-control shadow-sm" id="password-input" required>
-                    </div>
-                    <button type="submit" class="bg-gradient btn btn-lg btn-primary mt-3 pe-5 ps-5 shadow text-light w-100"
-                    (click)="login()">Sign In</button>
+            <div class="container-fluid">
+                <div class="background-cover row" id="loginbackground">
+                    <div
+                        class="bg-dark bg-gradient col-12 col-lg-4 col-md-6 col-sm-8 container-sm mb-5 mt-5 rounded shadow-lg">
+                        <div class="align-content-center container flex-wrap justify-content-center mb-5 mt-5 p-5">
+                            <h3 class="fs-3 fw-lighter mb-4 text-center text-light text-uppercase">Sign in</h3>
+                            <form role="form" class="text-light">
+                                <div class="mb-3">
+                                    <label for="username-input" class="lead text-white-50">Username</label>
+                                    <input [(ngModel)]="lf.username" type="username" name="username"
+                                        class="bg-gradient bg-light form-control shadow-sm" id="username-input"
+                                        required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password-input" class="lead text-white-50">Password</label>
+                                    <input [(ngModel)]="lf.password" type="password" name="password"
+                                        class="bg-gradient bg-light form-control shadow-sm" id="password-input"
+                                        required>
+                                </div>
+                                <button type="submit"
+                                    class="bg-gradient btn btn-lg btn-primary mt-3 pe-5 ps-5 shadow text-light w-100"
+                                    (click)="login()">Sign In</button>
+                                <br /><br />
+                                <div class="form-group col-md-12 ">
+                                    <button [routerLink]="'register'" class="btn btn-secondary">Register</button>
+                                </div>
 
-                    <div class="form-group col-md-12 ">
-                        <button [routerLink]="'register'" class="btn btn-secondary">Register</button>
-                    </div>
 
-                    
-                </form>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
