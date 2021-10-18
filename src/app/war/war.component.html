@@ -1,23 +1,49 @@
 <app-nav></app-nav>
+<div style="
+background: url('match_bg.jpg') no-repeat center center fixed;
+width: 105%;
+height: 95vh;
+background-size:cover;
+">
 
 
-<div>
-    <div class="computer-card-slot card-slot">
-        <img style="width: 220px;height:260px;" src="{{dCurrentCard}">
-        <div class="computer-deck deck">{{dealer_remaining}}</div>
+    <div class="whole">
+        <div>
+            <div class="row">
+                <div class="column">
+                    <div class="computer-card-slot card-slot">
+                        <img style="width: 220px;height:260px;" src="{{dCurrentCard}}">
+                    </div>
+
+                </div>
+
+                <div class="column">
+                    <div class="computer-deck deck">{{dealer_remaining}}</div>
+                </div>
+            </div>
+            <div class="cell">
+                <div class="text">{{innerText}}</div>
+            </div>
+
+            <div class="row">
+                <div class="cell">
+                    <div class="player-card-slot card-slot">
+                        <img style="width: 220px;height:260px;" src="{{pCurrentCard}}">
+                    </div>
+                </div>
+
+                <div class="cell">
+                    <div class="player-deck deck">{{player_remaining}}</div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <button (click)="centerButton()" class="btn btn-secondary">{{buttonText}}</button>
+        <div *ngIf=></div>
     </div>
-    
-    
-    <div class="text">{{innerText}}</div>
-
-    <div class="player-card-slot card-slot">
-        <img style="width: 220px;height:260px;" src="{{pCurrentCard}}">
+    <div>
+        <img style="position: absolute; height: 200px; width:200px; left:85%; top:90%;" src="jar_jar.png">
     </div>
-
-    <div class="player-deck deck">{{player_remaining}}</div>
-
-    <button (click)="startGame()" class="btn btn-secondary">Start Game</button>
-    <button (click)="newHands()" class="btn btn-secondary">New Hands</button>
-    <button (click)="drawCards()" class="btn btn-secondary">Draw Card</button>
-
-</div>

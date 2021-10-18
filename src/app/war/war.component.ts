@@ -35,11 +35,14 @@ export class WarComponent implements OnInit {
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
   stop = true;
+  endgame = false;
   inRound = false;
+  setup = false;
   innerText = ''
   player_remaining = -1
   pCurrentCard = ''
   dCurrentCard = ''
+  buttonText = 'Start Game'
 
 
   constructor(private cardService : CardService, private deckService : DeckService) { }
@@ -47,47 +50,56 @@ export class WarComponent implements OnInit {
   ngOnInit(): void { }
 
   public startGame() {
+    console.log('Starting game.')
     this.deckService.newDeck()
-    .subscribe(data => { this.deck_id = data.deck_id})
-    console.log(`${this.deck_id}`)
+    .subscribe(data => { this.deck_id = data.deck_id}).add( ()=> {
     this.inRound = false;
     this.stop = false;
-
-    let username = localStorage.getItem("username")
-    console.log(username)
+    this.setup = true;
+    console.log(`${this.deck_id}`)
+    })
+   
 
     // Should I do this?
     // this.newHands();
   }
 
   public newHands() {
-    
+    console.log('Distributing cards...')
     this.cardService.draw(this.deck_id, 26)
-      .subscribe(data => { this.dealerCards = data.cards})
-    this.dealer_remaining = 26
+      .subscribe(data => { this.dealerCards = data.cards}).add(() =>{
+        this.dealer_remaining = 10
     
-    this.cardService.draw(this.deck_id, 26)
-      .subscribe(data => { this.playerCards = data.cards })
-    this.player_remaining = 26
+      this.cardService.draw(this.deck_id, 26)
+        .subscribe(data => { this.playerCards = data.cards }).add(() => {
+          this.player_remaining = 10
 
-    this.stop = false
-    this.inRound = false
+        this.stop = false
+        this.inRound = false
 
-    console.log(this.dealerCards)
-    console.log(this.playerCards)
+        console.log(this.dealerCards)
+        console.log(this.playerCards)
 
-    this.cleanBeforeRound()
+        this.cleanBeforeRound()
+      })
+    
+    })
+    
   }
 
   public centerButton() {
-    if (this.stop == true) {
-      this.startGame
-    }
-
-    if (this.inRound) {
+    if (this.stop) {
+      this.startGame()
+      this.buttonText = 'Get Cards'
+    } else if (this.setup) {
+      this.newHands()
+      this.buttonText = 'Draw Card'
+    } else if (this.inRound) {
       this.cleanBeforeRound()
+      this.buttonText = 'Draw Card'
     } else {
       this.drawCards()
+      this.buttonText = 'Continue'
     }
   }
   /**
@@ -97,13 +109,14 @@ export class WarComponent implements OnInit {
    * 'continue' when inround = true
    * 4. CSS
    * 5. Connect to chips
-   * 6. Login
    */
   public cleanBeforeRound() {
+    console.log('Cleaning table...')
     this.inRound = false;
     this.innerText = ''
     this.pCurrentCard = ''
     this.dCurrentCard = ''
+    this.setup = false
     // METHODS
     
     this.updateDeckCount()
@@ -115,6 +128,7 @@ export class WarComponent implements OnInit {
   }
 
   public drawCards() {
+    console.log('Drawing cards...')
 
     this.inRound = true
 
@@ -145,11 +159,15 @@ export class WarComponent implements OnInit {
     }
 
     if (this.gameOver(this.playerCards.length)) {
+      console.log('Game over!')
       this.innerText = "You Lose!"
       this.stop = true 
+      this.endgame = true
     } else if (this.gameOver(this.dealerCards.length)) {
+      console.log('Game over!')
       this.innerText = "You Win!"
       this.stop = true
+      this.endgame = true
     }
   }
 
@@ -162,8 +180,9 @@ export class WarComponent implements OnInit {
   }
   
   public updateDeckCount() {
-    this.player_remaining = this.playerCards.length
-    this.dealer_remaining = this.dealerCards.length
+    console.log('Deck count updated.')
+    this.player_remaining = this.playerCards.length-16
+    this.dealer_remaining = this.dealerCards.length-16
   }
 
   // public isRoundWinner(card1: Card, card2: Card): string {
