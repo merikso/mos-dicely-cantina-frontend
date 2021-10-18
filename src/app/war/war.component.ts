@@ -52,7 +52,7 @@ export class WarComponent implements OnInit {
   u_id = 0
   chips = 0
   starterText = 'Enter your bet and submit.'
-  
+  victory = ''
 
 
   constructor(private cardService : CardService, 
@@ -161,6 +161,10 @@ export class WarComponent implements OnInit {
   public drawCards() {
     console.log('Drawing cards...')
 
+    if (this.dealer_remaining == -24) {
+      this.betRequired = true;
+    }
+
     this.inRound = true
 
     const playerCard = this.playerCards.shift()!
@@ -199,6 +203,8 @@ export class WarComponent implements OnInit {
       this.innerText = `You Lose! You lost ${this.bet} chips.`
       this.inRound = false;
       this.stop = true 
+      this.pCurrentCard = 'gameover.gif'
+      this.dCurrentCard = 'gameover2.gif'
       // this.pCurrentCard = 'face_down_match.png'
       this.buttonText = 'Play again?'
       this.starterText = 'Enter your bet and submit.'
@@ -210,6 +216,8 @@ export class WarComponent implements OnInit {
       this.innerText = `You Win! You won ${this.bet} chips`
       this.inRound = false;
       this.stop = true
+      this.dCurrentCard = 'winnerwinner.gif'
+      this.pCurrentCard = 'star-wars-funny-icegif-2.gif'
       // this.dCurrentCard = 'face_down_match.png'
       this.deposit()
       this.buttonText = 'Play again?'

@@ -56,6 +56,10 @@ body {
 	background: transparent url('match_bg.jpg') no-repeat center;
 	background: transparent url('blank_space.png') no-repeat center;
 	background: transparent url('face_down_match.png') no-repeat center;
+	background: transparent url('star-wars-funny-icegif-2.gif') no-repeat center;
+	background: transparent url('winnerwinner.gif') no-repeat center;
+	background: transparent url('gameover.gif') no-repeat center;
+	background: transparent url('gameover2.gif') no-repeat center;
 }
 
 #game {
