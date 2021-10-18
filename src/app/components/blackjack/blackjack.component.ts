@@ -1,3 +1,4 @@
+import { UserArray } from './../../models/user';
 import { UserService } from 'src/app/services/user.service';
 import { DeckService } from './../../services/deck.service';
 import { Component, OnInit } from '@angular/core';
@@ -19,8 +20,13 @@ export class BlackjackComponent implements OnInit {
   inProgress = false;
   playing = false;
   blackjack = false;
+
+  u_id = 0
+  chips = 0
+
+
   win = 0; // dummy value
-  public user: User = new User(0, 0, '', '') 
+  public user: User = new User(0, '', '', 0) 
   public playerCards: Card[] = [];
   public dealerCards: Card[] = [];
   pSum = 0;
@@ -44,7 +50,7 @@ export class BlackjackComponent implements OnInit {
       this.playing = true
       this.blackjack = false
       this.win = -5
-      this.getUserById() 
+      //this.getUserById() 
       if (this.pSum == 21) {
       this.blackjack = true;
       this.inProgress = false;
@@ -80,13 +86,17 @@ export class BlackjackComponent implements OnInit {
     }
   
   public getUser() {
-    this.userService.findByUsername(sessionStorage.getItem("username")!)
-    .subscribe(data => this.user = data)
+    let uarray: UserArray = new UserArray([])
+    let uarr: User[] = []
+    this.userService.findAllUsers()
+    .subscribe(data => uarr = data)
+    .add(console.log(uarr.length))
+   // this.u_id = this.userService.getUserFromArray('test', uarr)
   }
 
   public getUserById() {
-    this.userService.findByUserId(6)
-    .subscribe(data => this.user = data)
+    this.userService.findByUserId(this.u_id)
+    .subscribe(data => {this.u_id = data.id, this.chips = data.chips})
   }
   
   public withdraw() {

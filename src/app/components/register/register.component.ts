@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  public user = new User(0, 0, '', '')
+  public user = new User(0, '', '', 0)
   public clientMessage = new ClientMessage('')
 
   constructor(private userService: UserService, private router: Router) { }

@@ -1,12 +1,13 @@
+import { UserArray } from './../models/user';
 import { environment } from './../../environments/environment.prod';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
-import { localUrl } from 'src/environments/environment';
+import { localUrl, awsUrl } from 'src/environments/environment';
 import { catchError, tap } from 'rxjs/operators';
 
-const url = localUrl;
+const url = awsUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -38,16 +39,12 @@ export class UserService {
   }
 
   getAll(): Observable<User[]> {
-    return this.http.get<User[]>(environment.bkndUrlLocal + '/users/findAll');
+    return this.http.get<User[]>(`${url}/users`);
   }
   
-  getById(id: number): Observable<User> {
-    return this.http.get<User>(environment.bkndUrlLocal + `/users/${id}`);
-  }
-
   // not working yet
   withdraw(id: number, amt: number) {
-    this.http.get(`${url}/users/account/${id}/withdraw/${amt}`)
+    this.http.post(`${url}/users/account/${id}/withdraw/${amt}`, "")
   }
 
   deposit(id: number, amt: number) {
@@ -56,6 +53,17 @@ export class UserService {
   
     //const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'http://localhost:4200', 'Access-Control-Allow-Credentials': 'true', 'Access-Control-Allow-Methods': 'POST', 'Access-Control-Allow-Headers': 'Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization' }).set("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJhdWQiOiJVc2VyIFRva2VuIFBvcnRhbCIsInN1YiI6InRoaW5oIiwiaXNzIjoiQ3JlYXRlZCBieSBoaWVyb3BoYW50IiwiZXhwIjoxNjM0MDE1OTczLCJpYXQiOjE2MzM5ODcxNzN9.BbPyHNHRQVRepskfADugJlZU3cTY83rfZAsH4dbP7TBiEGTRL9vTqXQHzMx2A9WY2lUXCO0PGyYDB1w-KKWtcw"); 
 
+  getUserFromArray(username: string, uarray: UserArray): number {
+    let num = 0
+    
+    for (let i = 0; i < uarray.users.length; i++) {
+      if (uarray.users[i].username == username) {
+        num = uarray.users[i].id;
+      }
+    }
+
+    return num
+  }
 
   public getToken() {
     console.log('getToken() was called')
@@ -73,11 +81,13 @@ export class UserService {
   }
 
   public findAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(`${url}/users`)
+    console.log("findAll triggered")
+    return this.http.get<User[]>(`${url}/users/findAll`)
       .pipe(
         catchError(this.handleError)
       )
   }
+
   public findByUserId(id: number): Observable<User> {
 
     return this.http.get<User>(`${url}/users/${id}`)
