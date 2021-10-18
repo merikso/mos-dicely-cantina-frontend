@@ -169,6 +169,10 @@ export class BlackjackComponent implements OnInit {
   }, 500)
   }
 
+  public popup() {
+    alert("Meesa like you! Here's some chips.")
+  }
+
   ngOnInit(): void {
   }
 

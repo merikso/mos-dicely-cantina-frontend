@@ -71,29 +71,29 @@ background-size:cover;
 
                            
                         <div *ngIf="blackjack" class="game-result">
-                            <h1>Blackjack!!! Play again?</h1>
-                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <h1 style="margin-left: 30px;">Blackjack!!! Play again?</h1>
+                            <h3 style="margin-left: 30px;">Enter your bet. Draw new hands to lock it in.</h3>
                             <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
 
                         <div *ngIf="!inProgress && win == 1" class="game-result">
-                            <h1>You Won! Play again?</h1>
-                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <h1 style="margin-left: 30px;">You Won! Play again?</h1>
+                            <h3 style="margin-left: 30px;">Enter your bet. Draw new hands to lock it in.</h3>
                             <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
 
                         <div *ngIf="!inProgress && win == -1" class="game-result">
-                            <h1>You Lost! Play again?</h1>
-                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <h1 style="margin-left: 30px;">You Lost! Play again?</h1>
+                            <h3 style="margin-left: 30px;">Enter your bet. Draw new hands to lock it in.</h3>
                             <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
 
                         <div *ngIf="!inProgress && win == 0" class="game-result">
-                            <h1>Push (Tie). Play again?</h1>
-                            <h3>Enter your bet. Draw new hands to lock it in.</h3>
+                            <h1 style="margin-left: 30px;">Push (Tie). Play again?</h1>
+                            <h3 style="margin-left: 30px;">Enter your bet. Draw new hands to lock it in.</h3>
                             <input [(ngModel)]="bet" type="text" name="bet" class="form-control" id="bet" min=0 max='chips'>
                             <button class="btn btn-secondary btn-center" (click)="[newHands()]">Draw new hands!</button>
                         </div>
@@ -111,6 +111,6 @@ background-size:cover;
     </div>
     <!-- Jar Jar -->
     <div>
-        <img style="position: absolute; height: 200px; width:200px; left:85%; top:78%;" src="jar_jar.png">
+        <img style="position: absolute; height: 200px; width:200px; left:85%; top:78%;" src="jar_jar.png" (click)="[deposit(), popup()]">
     </div>
 </div>
