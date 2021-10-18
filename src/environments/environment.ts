@@ -4,13 +4,13 @@
 
 export const environment = {
   cdUrl: 'https://deckofcardsapi.com/api/deck/',
-  bkndUrlDeployed: 'Mosdicelybackend-env.eba-cpytmwf2.us-east-2.elasticbeanstalk.com',
+  bkndUrlDeployed: 'http://mosdicelybackend-env.eba-cpytmwf2.us-east-2.elasticbeanstalk.com',
   bkndUrlLocal: 'localhost:5000/',
   production: false,
 };
 
 export const localUrl = `http://localhost:5000`
-export const awsUrl = ``
+export const awsUrl = `http://mosdicelybackend-env.eba-cpytmwf2.us-east-2.elasticbeanstalk.com`
 
 /*
  * For easier debugging in development mode, you can import the following file

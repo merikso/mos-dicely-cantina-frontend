@@ -16,10 +16,9 @@ background-size:cover;
                     <div>
                         <div class="row">
                             <h2 class="card-header text-center">{{ deck_id }}</h2>
-                            <button class="btn btn-secondary btn-center" (click)="newDeck()">Get a new deck!</button>
-                            <h3>&nbsp;&nbsp;&nbsp; Sum: {{ pSum }}</h3>
-                            <h3>&nbsp;&nbsp;&nbsp; Dealer Sum: {{ dSum }}</h3>
-                            <h3>username: {{ user.username}}</h3>
+                            <button class="btn btn-secondary btn-center" (click)="[newDeck()]">Get a new deck!</button>
+                            <button class="btn btn-secondary btn-center" (click)="[getUser()]">Get User Info</button>
+                            <h3>Id: {{ u_id }}</h3>
                             <h3>chips: {{ user.chips}}</h3>
                         </div>
 
@@ -29,13 +28,21 @@ background-size:cover;
 
 
 
-                        <div *ngIf="playing" class="dealer-hand-fd">
-                            <div class="cell">
-                                <img style="width: 220px;height:260px;" src="face_down_match.png">
+                        <div *ngIf="playing" class="dealer-hand">
+                             <div class="cell">
+                                <img style="width: 180px;height:208px;" src="face_down_match.png">
                             </div>
                             <div class="cell">
                                 <img style="width: 80%;height:80%;" src="{{dealerCards[1].image}}">
-                            </div>      
+                            </div> 
+                            <!-- <ul class = "list-group">
+                                <li class="list-group-item list-group-item-danger">
+                                    <img style="width:70%;height:80%;" src="face_down_match.png">
+                                </li>
+                                <li class="list-group-item list-group-item-danger">
+                                    <img style="width:70%;height:80%;" src="{{dealerCards[1].image}}">
+                                </li>
+                            </ul> -->    
                         </div>
 
                         <div *ngIf="!playing" class="dealer-hand">
