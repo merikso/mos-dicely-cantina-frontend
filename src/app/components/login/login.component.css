@@ -1,3 +1,11 @@
+* {
+	color: rgb(236, 233, 58);
+	font-family: "Starwars1";
+	letter-spacing: 2px;
+	-webkit-text-stroke: 1px black;
+	
+}
+
 .parent {
   display: flex;
   justify-content: center;
